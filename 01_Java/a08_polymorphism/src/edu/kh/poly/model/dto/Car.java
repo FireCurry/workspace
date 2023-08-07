@@ -52,5 +52,8 @@ public class Car extends Object{
 	}
 	
 	
+	public void bindingTest() {
+		System.out.println("Car 자료형 입니다.");
+	}
 	
 }
