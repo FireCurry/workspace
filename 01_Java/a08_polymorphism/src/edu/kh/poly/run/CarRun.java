@@ -79,4 +79,5 @@ public class CarRun {
 		
 		System.out.println( ( (Spark)carArr[2] ).getDiscountRate() );
 	}
+	// 집에서 복습 했음~
 }
