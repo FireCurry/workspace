@@ -6,7 +6,7 @@ public class Car extends Object{
 	private int seat; // 좌석 수
 	private String fuel; // 연료
 	
-	// 기본 생성자 자동완성 : Ctrl + Space Bar -> Enter
+	// 기본 생성자 자동 완성 : Ctrl + SpaceBar -> Enter
 	public Car() {
 	}
 
