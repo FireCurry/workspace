@@ -194,10 +194,10 @@ public class ExceptionService {
 								// IOException 또는 IOException 자식 예외를 모두 던짐
 								// (다형성 적용)
 		
-//		throw new IOException();
+		throw new IOException();
 //		throw new EOFException(); // 자식 타입 예외 객체
 		
-		throw new DataFormatException();
+//		throw new DataFormatException();
 		// IOException과 관련 없는 예외
 		// -> 별도 처리 필요
 		
