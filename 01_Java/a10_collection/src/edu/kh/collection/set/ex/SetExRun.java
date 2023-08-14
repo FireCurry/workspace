@@ -6,9 +6,8 @@ public class SetExRun {
 		
 //		example.ex1();
 //		example.ex2();
-//		example.ex3();
+		example.ex3();
 //		example.createLottoNumber();
 //		example.lottoVersion2();
-		example.ex33();
 	}
 }

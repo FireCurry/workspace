@@ -219,7 +219,7 @@ public class IOService {
 			System.out.print("복사할 파일 경로 : ");
 			String target = sc.nextLine(); // 한 줄 입력
 			
-			System.out.print("복사본이 저장될 경로 + 파일명 : ");
+			System.out.print("복사본이 저장될 경로 + 파일명.확장자 : ");
 			String copy = sc.nextLine();
 			
 			// 복사 대상을 읽어올 InputStream 생성 + 보조 스트림으로 성능 향상
