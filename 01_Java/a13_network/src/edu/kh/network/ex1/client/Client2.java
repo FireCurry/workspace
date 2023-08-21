@@ -7,15 +7,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class Client2 {
-
+	
 	public void start() {
-		Scanner sc = new Scanner(System.in);
-		
 		String ip = "127.0.0.1";
-		int port = 7777;
+		int port = 9999;
 		
 		Socket socket = null;
 		
@@ -37,11 +34,9 @@ public class Client2 {
 			String message = br.readLine();
 			System.out.println(message);
 			
-			String reply = sc.nextLine();
-			
-			pw.println(reply);
+			String message2 = "접속 완료";
+			pw.println(message2);
 			pw.flush();
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -53,5 +48,6 @@ public class Client2 {
 				e.printStackTrace();
 			}
 		}
+		
 	}
 }

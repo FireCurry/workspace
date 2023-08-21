@@ -65,7 +65,6 @@ public class Client {
 				pw.flush(); // 스트림에 있는 메시지 밀어내기
 				
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
