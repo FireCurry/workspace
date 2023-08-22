@@ -324,3 +324,116 @@ WHERE EMAIL LIKE '____%'; -- 이메일 4글자 이상 조회
 SELECT EMP_ID 사번, EMP_NAME 이름, EMAIL
 FROM EMPLOYEE e 
 WHERE EMAIL LIKE '___#_%' ESCAPE '#';
+
+---------------------------------------------------------------
+
+-- 날짜(DATE) 비교하기
+
+-- EMPLOYEE 테이블에서 입사일이
+-- '1990/01/01' ~ '2000/12/31' 사이인 사원의
+-- 사번, 이름, 입사일 조회
+SELECT EMP_ID 사번, EMP_NAME 이름, HIRE_DATE 입사일
+FROM EMPLOYEE e 
+WHERE HIRE_DATE >= '1990/01/01' AND HIRE_DATE <= '2000/12/31';
+
+SELECT EMP_ID 사번, EMP_NAME 이름, HIRE_DATE 입사일
+FROM EMPLOYEE e 
+WHERE HIRE_DATE BETWEEN '1990/01/01' AND '2000/12/31';
+
+-- '1990/01/01'는 정확히는 문자열 형식이지만
+-- 날짜 형식의 문자열이기 때문에
+-- HIRE_DATE (DATE 타입) 비교 시 자동으로 형 변환(Parsing)이 진행된다.
+
+--> 사용자(개발자)가 직접 SQL에 날짜를 입력할 땐
+-- 날짜 형식의 문자열을 작성한다! (2023/08/22, 2023-08-23, 20230822)
+
+--> 날짜(DATE) 타입은 비교가 가능하다!
+
+------------------------------------------------------------------
+
+/* ORDER BY 절
+ * 
+ * - SELECT문의 조회 결과(RESULT SET)를 정렬할 때 사용하는 구문
+ * 
+ * - *** SELECT구문에서 제일 마지막에 해석된다! ***
+ * 
+ * [작성법]
+ * 3: SELECT 컬럼명 AS 별칭, 컬럼명, 컬럼명, ...
+ * 1: FROM 테이블명
+ * 2: WHERE 조건식
+ * 4: ORDER BY 컬럼명 | 별칭 | 컬럼 순서 [오름/내림차순] 
+ *            [NULLS FIRST | LAST]
+ * */
+
+-- EMPLOYEE 테이블에서 급여 오름차순으로 이름, 급여 조회
+SELECT EMP_NAME 이름, SALARY 급여
+FROM EMPLOYEE
+ORDER BY SALARY ASC; -- ASC(ascending) : 오름차순
+
+-- EMPLOYEE 테이블에서 급여 내림차순으로 이름, 급여 조회
+SELECT EMP_NAME 이름, SALARY 급여
+FROM EMPLOYEE
+ORDER BY SALARY DESC; -- DESC(descending) : 내림차순
+
+-- EMPLOYEE 테이블에서 부서 코드가 'D5', 'D6', 'D9'인 사원의
+-- 사번, 이름, 부서 코드를 부서 코드 오름차순으로 조회
+SELECT EMP_ID 사번, EMP_NAME 이름, DEPT_CODE 부서코드
+FROM EMPLOYEE e 
+WHERE DEPT_CODE IN ('D5', 'D6', 'D9')
+ORDER BY DEPT_CODE /*ASC*/; -- ASC가 기본값 (생략 가능)
+
+-- EMPLOYEE 테이블에서
+-- 급여가 300만 이상, 600만 미만인 사원
+-- 사번, 이름, 급여를 이름 내림차순으로 조회
+SELECT EMP_ID 사번, EMP_NAME 이름, SALARY 급여
+FROM EMPLOYEE e
+WHERE SALARY >= 3000000 AND SALARY < 6000000
+ORDER BY 2 DESC; -- 2번 컬럼 내림차순으로 조회
+
+/* ORDER BY절에는 계산식, 함수식 작성도 가능! */
+-- EMPLOYEE 테이블에서
+-- 이름, 연봉을 연봉 내림차순으로 조회
+SELECT EMP_NAME 이름, SALARY * 12 연봉
+FROM EMPLOYEE e 
+ORDER BY SALARY * 12 DESC;
+
+/* ORDER BY절에는 별칭 작성도 가능! (해석 순서 중요!) */
+-- 연봉이 3500만 이상인 사원의 
+-- 사번, 이름, 연봉을 연봉 오름차순으로 조회 (모든 컬럼에 별칭 작성)
+/* 3 */SELECT EMP_ID "사번", EMP_NAME "이름", SALARY * 12 "연봉"
+/* 1 */FROM EMPLOYEE e 
+/* 2 */WHERE SALARY * 12 >= 35000000
+/* 4 */ORDER BY "연봉"; 
+-- SELECT절 해석 후 ORDER BY절이 해석되기 때문에
+-- SELECT절에서 해석된 별칭을 다음 순서인 ORDER BY절에서 사용 가능
+
+/* 정렬 시 컬럼 값이 NULL인 행의 정렬 방법 지정 */
+-- 모든 사원의 이름, 전화번호 조회
+SELECT EMP_NAME 이름, PHONE 전화번호
+FROM EMPLOYEE e 
+--ORDER BY PHONE /*NULLS LAST*/;  -- 오름차순 -> NULL은 마지막에 배치(기본값)
+--ORDER BY PHONE NULLS FIRST;     -- 오름차순 -> NULL이 처음 부분에 배치
+--ORDER BY PHONE DESC /*NULLS FIRST*/; -- 내림차순 -> NULL이 처음 부분에 배치(기본값)
+ORDER BY PHONE DESC NULLS LAST;      -- 내림차순 -> NULL을 마지막에 배치
+
+/* 정렬 중첩 */
+-- 큰 분류를 먼저 정렬하고
+-- 작은 분류를 큰 분류가 흐트러지지 않는 선에서 정렬
+
+-- 이름, 부서코드, 급여를
+-- 부서 오름차순, 급여 내림차순으로 조회
+SELECT EMP_NAME 이름, DEPT_CODE 부서코드, SALARY 급여
+FROM EMPLOYEE e 
+ORDER BY DEPT_CODE, SALARY DESC;
+
+-- 이름, 부서코드, 직급코드
+-- 부서코드 내림차순, 직급코드 오름차순, 이름 오름차순 조회
+SELECT EMP_NAME 이름, DEPT_CODE 부서코드, JOB_CODE 직급코드
+FROM EMPLOYEE e 
+ORDER BY DEPT_CODE DESC, JOB_CODE, EMP_NAME;
+
+/* SELECT절에 작성되지 않은 컬럼으로도 정렬 기준 작성 가능 */
+-- 이름, 급여를 사번 내림차순으로 조회
+SELECT /*EMP_ID 사번, */EMP_NAME 이름, SALARY 급여
+FROM EMPLOYEE e 
+ORDER BY EMP_ID DESC;
