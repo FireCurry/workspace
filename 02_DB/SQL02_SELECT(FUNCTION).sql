@@ -35,7 +35,9 @@ FROM TB_PROFESSOR;
 SELECT STUDENT_NO , STUDENT_NAME 
 FROM TB_STUDENT
 WHERE EXTRACT(YEAR FROM ENTRANCE_DATE)-
-	EXTRACT(YEAR FROM TO_DATE(SUBSTR(STUDENT_SSN, 1, 2), 'RRRR')) != 19;
+	EXTRACT(YEAR FROM TO_DATE(SUBSTR(STUDENT_SSN, 1, 2), 'RRRR')) = 20;
+
+-- EXTRACT( TO_DATE('19' || SUBSTR(STUDENT_SSN,1,6), 'YYYYMMDD') )
 
 -- 6번
 -- 춘 기술대학교의 2000년도 이후 입학자들은 학번이 A로 시작하게 되어있다. 
@@ -68,18 +70,18 @@ WHERE COACH_PROFESSOR_NO IS NULL;
 
 -- 10번
 -- 학번이 A112113인 김고운 학생의 년도 별 평점을 구하는 SQL문을 작성하시오.
--- 단, 이때 출력화면의 헤더는 "년도", "년도 별 평점"이라고 찍히게 하고, 
+-- 단, 이때 출력화면의 헤더는 "년도", "년도 별 평점"이라고 찍히게 하고,
 -- 점수는 반올림하여 소수점 이하 한자리까지만 표시한다.
-SELECT "년도", POINT "년도 별 평점"
-FROM TB_GRADE MAIN
-JOIN (SELECT STUDENT_NO , SUBSTR(TERM_NO, 1, 4) "년도" FROM TB_GRADE SUB) 
-	ON(SUB.STUDENT_NO = MAIN.STUDENT_NO)
-ORDER BY "년도";
+SELECT SUBSTR(TERM_NO,1,4) 년도, ROUND(AVG(POINT), 1 ) 평점
+FROM TB_GRADE 
+WHERE STUDENT_NO = 'A112113'
+GROUP BY SUBSTR(TERM_NO,1,4);
 
 -- 11번
--- 학과 별 휴학생 수를 파악하고자 한다. 
+-- 학과 별 휴학생 수를 파악하고자 한다.
 -- 학과 번호와 휴학생 수를 조회하는 SQL을 작성하시오.
 SELECT DEPARTMENT_NO , SUM(DECODE(ABSENCE_YN, 'Y', 1, 'N', 0))
+-- COUNT ( DECODE(ABSENCE_YN, 'Y', 'Y') )
 FROM TB_STUDENT
 GROUP BY DEPARTMENT_NO
 ORDER BY DEPARTMENT_NO;
@@ -92,13 +94,21 @@ FROM (SELECT STUDENT_NAME , COUNT(*) "동명인 수"
 	GROUP BY STUDENT_NAME)
 WHERE "동명인 수" != 1
 ORDER BY STUDENT_NAME;
- 
+
+SELECT STUDENT_NAME "이름", COUNT(*) "동명인 수"
+FROM TB_STUDENT 
+GROUP BY STUDENT_NAME
+HAVING COUNT(*) > 1
+ORDER BY STUDENT_NAME ;
+
 -- 13번
 -- 학번이 A112113인 김고운 학생의 학점을 조회하려고 한다.
 -- 년도, 학기 별 평점과 년도 별 누적 평점, 총 평점을 구하는 SQL을 작성하시오.
 -- (단, 평점은 소수점 1자리까지만 반올림하여 표시한다.
-
-
+SELECT NVL(SUBSTR(TERM_NO, 1, 4), ' ') 년도, NVL(SUBSTR(TERM_NO, 5, 2), ' ') 학기, ROUND(AVG(POINT), 1) 평점
+FROM TB_GRADE 
+WHERE STUDENT_NO = 'A112113'
+GROUP BY ROLLUP(SUBSTR(TERM_NO, 1, 4), SUBSTR(TERM_NO, 5, 2));
 
 
 
