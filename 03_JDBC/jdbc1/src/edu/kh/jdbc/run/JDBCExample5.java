@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Scanner;
 
 public class JDBCExample5 {
 	public static void main(String[] args) {
+
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -21,26 +21,17 @@ public class JDBCExample5 {
 			
 			conn = DriverManager.getConnection(url, id, pw);
 			
-			Scanner sc = new Scanner(System.in);
-			System.out.print("평균 급여 : ");
-			int input = sc.nextInt();
-			String sql = "SELECT DEPT_TITLE, JOB_NAME, AVG(SALARY) "
-					+ "FROM EMPLOYEE "
-					+ "LEFT JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID) "
-					+ "JOIN JOB USING(JOB_CODE) "
-					+ "GROUP BY DEPT_TITLE, JOB_NAME "
-					+ "HAVING AVG(SALARY) > "+input+""
-							+ "ORDER BY DEPT_TITLE";
-			
 			stmt = conn.createStatement();
+			
+			String sql = "SELECT EMP_ID, EMP_NAME FROM EMPLOYEE";
+			
 			rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
-				String deptTitle = rs.getString("DEPT_TITLE");
-				String jobName = rs.getString("JOB_NAME");
-				double avgSalary = rs.getDouble("AVG(SALARY)");
+				String empId = rs.getString("EMP_ID");
+				String empName = rs.getString("EMP_NAME");
 				
-				System.out.printf("부서명 : %s / 직급명 : %s / 평균 급여 : %.2f \n", deptTitle, jobName, avgSalary);
+				System.out.printf("%s / %s \n", empId, empName);
 			}
 			
 		} catch (Exception e) {
@@ -50,7 +41,7 @@ public class JDBCExample5 {
 				if (rs != null) rs.close();
 				if (stmt != null) stmt.close();
 				if (conn != null) conn.close();
-			} catch (Exception e) {
+			} catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
