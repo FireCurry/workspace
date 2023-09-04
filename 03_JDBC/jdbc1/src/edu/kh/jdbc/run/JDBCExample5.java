@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class JDBCExample5 {
 	public static void main(String[] args) {
-
+		
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -21,27 +21,27 @@ public class JDBCExample5 {
 			
 			conn = DriverManager.getConnection(url, id, pw);
 			
+			String sql = "SELECT MEMBER_EMAIL, MEMBER_PW FROM MEMBER";
+			
 			stmt = conn.createStatement();
-			
-			String sql = "SELECT EMP_ID, EMP_NAME FROM EMPLOYEE";
-			
 			rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
-				String empId = rs.getString("EMP_ID");
-				String empName = rs.getString("EMP_NAME");
 				
-				System.out.printf("%s / %s \n", empId, empName);
+				String memberEmail = rs.getString("MEMBER_EMAIL");
+				String memberPw = rs.getString("MEMBER_PW");
+				
+				System.out.printf("%s / %s \n", memberEmail, memberPw);
+				
 			}
-			
-		} catch (Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				if (rs != null) rs.close();
 				if (stmt != null) stmt.close();
 				if (conn != null) conn.close();
-			} catch(Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}

@@ -111,7 +111,7 @@ public class MemberService {
 		
 		String result = dao.select(conn, member);
 		
-		if (result != null) commit(conn);
+		if (result != "") commit(conn);
 		else				rollback(conn);
 		
 		close(conn);

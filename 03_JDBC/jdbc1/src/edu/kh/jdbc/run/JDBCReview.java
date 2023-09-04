@@ -76,6 +76,7 @@ public class JDBCReview {
 			// 예외의 최상위 부모 모든 예외를 잡아서 처리
 			e.printStackTrace();
 		} finally {
+			
 			// 7. 사용한 JDBC 객체 자원 반환(역순으로!)
 			try {
 				if (rs != null) rs.close();

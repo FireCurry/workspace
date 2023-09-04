@@ -202,7 +202,7 @@ public class MemberView {
 		
 		String result = service.select(member);
 		
-		if (result != null) System.out.println(result);
-		else 				System.out.println("아이디 또는 비밀번호 불일치");
+		if (result != "") System.out.println(result);
+		else 				System.out.println("\n아이디 또는 비밀번호 불일치");
 	}
 }

@@ -196,7 +196,7 @@ public class MemberDAO {
 	}
 
 	public String select(Connection conn, Member member) {
-		String result = null;
+		String result = "";
 		
 		String sql = "SELECT * FROM MEMBER WHERE MEMBER_EMAIL = ? AND MEMBER_PW = ? ";
 		

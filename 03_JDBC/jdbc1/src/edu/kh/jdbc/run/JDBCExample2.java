@@ -63,7 +63,7 @@ public class JDBCExample2 {
 				
 				System.out.printf("%s / %s / %d / %s \n", empId, empName, salary, jobName);
 			} // while 종료
-			
+			sc.close();
 		} catch(Exception e) {
 			// Exception : 모든 예외의 최상위 부모
 			// -> 다형성(업캐스팅)을 이용해서 모든 자식 예외를 잡아서 처리
