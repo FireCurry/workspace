@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.kh.jdbc.model.dto.Board;
 import edu.kh.jdbc.model.dto.Member;
 
 public class ProjectDAO {
@@ -374,6 +375,10 @@ public class ProjectDAO {
 		return result;
 	}
 
+	/** 게시글 목록 조회
+	 * @param conn
+	 * @return
+	 */
 	public String selectBoardList(Connection conn) {
 		String result = null;
 		String sql = "SELECT BOARD_NO, BOARD_TITLE, \r\n"
@@ -388,17 +393,20 @@ public class ProjectDAO {
 			rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
-				String boardNo = rs.getString("BOARD_NO");
+				if(result == null) result = "";
+				int boardNo = rs.getInt("BOARD_NO");
 				String boardTitle = rs.getString("BOARD_TITLE");
 				String bCreateDate = rs.getString("B_CREATE_DATE");
 				String readCount = rs.getString("READ_COUNT");
-				String memberNo = rs.getString("MEMBER_NO");
+				int memberNo = rs.getInt("MEMBER_NO");
 				String memberNickname = rs.getString("MEMBER_NICKNAME");
 				
-				
+				String temp = String.format("No : %d / Title : %s / CreateDate : %s / ReadCount : %s / memNo : %d / memNickname : %s\n",
+						boardNo, boardTitle, bCreateDate, readCount, memberNo, memberNickname);
+				result += temp;
 			}
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		} finally {
 			close(rs);
 			close(stmt);
@@ -406,6 +414,247 @@ public class ProjectDAO {
 		
 		return result;
 	}
+
+	/** 게시글 목록 조회 (List 사용)
+	 * @param conn 
+	 * @return
+	 */
+	public List<Board> selectBoardList2(Connection conn) {
+		List<Board> boardList = new ArrayList<Board>();
+		
+		String sql = "SELECT BOARD_NO, BOARD_TITLE, \r\n"
+				+ "	TO_CHAR(B_CREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') B_CREATE_DATE,\r\n"
+				+ "	READ_COUNT, MEMBER_NO, MEMBER_NICKNAME \r\n"
+				+ "FROM BOARD \r\n"
+				+ "JOIN MEMBER USING(MEMBER_NO)\r\n"
+				+ "WHERE BOARD_DEL_FL = 'N'\r\n"
+				+ "ORDER BY BOARD_NO DESC";
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				Board board = new Board();
+				
+				board.setBoardNo(rs.getInt("BOARD_NO"));
+				board.setBoardTitle(rs.getString("BOARD_TITLE"));
+				board.setBoardCreateDate(rs.getString("B_CREATE_DATE"));
+				board.setReadCount(rs.getInt("READ_COUNT"));
+				board.setMemberNo(rs.getInt("MEMBER_NO"));
+				board.setMemberNickname(rs.getString("MEMBER_NICKNAME"));
+				
+				boardList.add(board);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			
+		}
+		return boardList;
+	}
 	
+	/** 게시글 상세 조회
+	 * @param conn
+	 * @param boardNo
+	 * @return
+	 */
+	public Board selectBoardList(Connection conn, int boardNo) {
+		// 결과 저장용 변수 선언
+		Board board = null;
+		
+		// 게시글 번호를 입력 받아 일치하는 게시글의
+        // 제목, 내용, 작성일, 조회수, 작성자번호, 작성자 닉네임 조회
+        // 단, 삭제되지 않은 게시글만 조회 가능(BOARD_DEL_FL = 'N')
+		String sql = "SELECT BOARD_TITLE, BOARD_CONTENT, \r\n"
+				+ "	TO_CHAR(B_CREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') B_CREATE_DATE, \r\n"
+				+ "	READ_COUNT, MEMBER_NO, MEMBER_NICKNAME\r\n"
+				+ "FROM BOARD\r\n"
+				+ "JOIN MEMBER USING(MEMBER_NO)\r\n"
+				+ "WHERE BOARD_DEL_FL = 'N'\r\n"
+				+ "AND BOARD_NO = ?";
+		
+		try {
+			// pstmt 생성
+			pstmt = conn.prepareStatement(sql);
+			
+			// ?에 알맞은 값 세팅
+			pstmt.setInt(1, boardNo);
+			
+			// sql(SELECT) 수행 후 결과(ResultSet) 반환 받기
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { // 조회 결과 있을 경우
+				board = new Board();
+//				String boardTitle = rs.getString("BOARD_TITLE");
+//				String boardContent = rs.getString("BOARD_CONTENT");
+//				String bCreateDate = rs.getString("B_CREATE_DATE");
+//				int readCount = rs.getInt("READ_COUNT");
+//				int memberNo = rs.getInt("MEMBER_NO");
+//				String memberNickname = rs.getString("MEMBER_NICKNAME");
+//				
+//				board.setBoardTitle(boardTitle);
+//				board.setBoardContent(boardContent);
+//				board.setBoardCreateDate(bCreateDate);
+//				board.setReadCount(readCount);
+//				board.setMemberNo(memberNo);
+//				board.setMemberNickname(memberNickname);
+				
+				board.setBoardNo(boardNo);
+				board.setBoardTitle(		rs.getString("BOARD_TITLE"));
+				board.setBoardContent(		rs.getString("BOARD_CONTENT"));
+				board.setBoardCreateDate(	rs.getString("B_CREATE_DATE"));
+				board.setReadCount(			rs.getInt("READ_COUNT"));
+				board.setMemberNo(			rs.getInt("MEMBER_NO"));
+				board.setMemberNickname(	rs.getString("MEMBER_NICKNAME"));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return board;
+	}
+
+	/** 조회수 증가(게시글 상세 조회)
+	 * @param conn
+	 * @param boardNo
+	 * @return
+	 */
+	public int incrementReadCount(Connection conn, int boardNo) {
+		int result = 0;
+		
+		String sql = "UPDATE BOARD SET \r\n"
+				+ "READ_COUNT = READ_COUNT + 1\r\n"
+				+ "WHERE BOARD_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/** 게시글 삭제1
+	 * @param conn
+	 * @param boardNo
+	 * @param memberNo
+	 * @return
+	 */
+	public int deleteBoard(Connection conn, int boardNo, int memberNo) {
+		int result = 0;
+		
+		String sql = "SELECT COUNT(*) CHK FROM BOARD\r\n"
+				+ "		WHERE BOARD_NO = ?\r\n"
+				+ "		AND MEMBER_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			pstmt.setInt(2, memberNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt("CHK");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/** 게시글 삭제2
+	 * @param conn
+	 * @param boardNo
+	 * @return
+	 */
+	public int deleteBoard2(Connection conn, int boardNo) {
+		int result = 0;
+		
+		String sql = "UPDATE BOARD SET BOARD_DEL_FL = 'Y' WHERE BOARD_NO = ? AND BOARD_DEL_FL = 'N' ";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/** 게시글 수정1
+	 * @param conn
+	 * @param memberNo
+	 * @param boardNo
+	 * @return
+	 */
+	public int updateBoard(Connection conn, int memberNo, int boardNo) {
+		int result = 0;
+		
+		String sql = "SELECT COUNT(*) CHK FROM BOARD WHERE BOARD_NO = ? AND MEMBER_NO = ? ";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			pstmt.setInt(2, memberNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt("CHK");
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/** 게시글 수정2
+	 * @param conn
+	 * @param title
+	 * @param content
+	 * @param boardNo
+	 * @return
+	 */
+	public int updateBoard2(Connection conn, String title, String content, int boardNo) {
+		int result = 0;
+		
+		String sql = "UPDATE BOARD SET BOARD_TITLE = ? , BOARD_CONTENT = ? WHERE BOARD_NO = ? ";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, boardNo);
+			
+			result = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 	
 } // DAO 클래스 끝

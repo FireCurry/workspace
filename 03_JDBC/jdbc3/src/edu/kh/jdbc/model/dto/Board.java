@@ -96,4 +96,10 @@ public class Board {
 				+ ", memberNo=" + memberNo + ", memberNickname=" + memberNickname + "]";
 	}
 	
+	public String toString2() {
+		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + 
+				", boardCreateDate=" + boardCreateDate + ", readCount=" + readCount
+				+ ", memberNo=" + memberNo + ", memberNickname=" + memberNickname + "]";
+	}
+	
 }

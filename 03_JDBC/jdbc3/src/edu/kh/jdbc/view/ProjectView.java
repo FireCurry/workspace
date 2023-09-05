@@ -1,9 +1,11 @@
 package edu.kh.jdbc.view;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import edu.kh.jdbc.model.dto.Board;
 import edu.kh.jdbc.model.dto.Member;
 import edu.kh.jdbc.model.service.ProjectService;
 
@@ -40,6 +42,42 @@ public class ProjectView {
 				// 단, 삭제되지 않은 글만 조회(BOARD_DEL_FL = 'N')
 				System.out.println("7. 게시글 목록 조회"); // selectBoardList()
 				
+	            // ------------------ 게시글 상세 조회(selectBoard) ------------------
+	            // 게시글 번호를 입력 받아 일치하는 게시글의
+	            // 제목, 내용, 작성일, 조회수, 작성자번호, 작성자 닉네임 조회
+	            // 단, 삭제되지 않은 게시글만 조회 가능(BOARD_DEL_FL = 'N')
+	            
+	            // view 메서드 1개 - service 메서드 1개 -  dao 메서드 2개
+	            // service에서 dao의 메서드를 연달아 호출
+	            // 1) 게시글 상세조회(selectBoard(게시글번호)) 를 먼저 수행
+	            // 2) 게시글 상세 조회 결과가 있을 경우 -> 조회수 증가(incrementReadCount(게시글 번호)) 수행
+	            System.out.println("8. 게시글 상세조회"); 
+				
+	            // ------------------ 게시글 삭제(deleteBoard) ------------------
+	            // 1) 로그인 여부 확인
+	            
+	            // 2) 로그인 상태인 경우 게시글 번호를 입력 받아
+	            // 해당 게시글 작성 회원 번호(BOARD.MEMBER_NO)와 
+	            // 로그인한 회원의 회원 번호(MEMBER.MEMBER_NO)가 일치하는지 확인하는 service 메서드 호출
+	            
+	            // 3) 일치할 경우
+	            // 정말 삭제하시겠습니까?(Y/N)을 출력 
+	            // -> Y 입력 시 BOARD_DEL_FL 컬럼 값을 'Y'로 수정하는 service 메서드 호출
+	            System.out.println("9. 게시글 삭제");
+	            
+	            
+	            // ------------------ 게시글 수정(updateBoard)  ------------------
+	            // 1) 로그인 여부 확인
+	            
+	            // 2) 로그인 상태인 경우 게시글 번호를 입력 받아
+	            // 해당 게시글 작성 회원 번호(BOARD.MEMBER_NO)와 
+	            // 로그인한 회원의 회원 번호(MEMBER.MEMBER_NO)가 일치하는지 확인하는 service 메서드 호출
+	            
+	            // 3) 일치할 경우
+	            // 수정할 제목, 내용을 입력 받아 해당 게시글의 제목, 내용을 수정
+	            System.out.println("10. 게시글 수정");
+	            
+	            System.out.println("999. 로그아웃");
 				System.out.println("0. 프로그램 종료");
 
 				System.out.print("메뉴 선택 >>> ");
@@ -53,7 +91,11 @@ public class ProjectView {
 				case 4 : updateDelFl(); break;
 				case 5 : selectAllMember(); break;
 				case 6 : insertBoard(); break;
-				case 7 : selectBoardList(); break;
+				case 7 : selectBoardList2(); break;
+				case 8 : selectBoard(); break;
+				case 9 : deleteBoard(); break;
+				case 10 : updateBoard(); break;
+				case 999 : logout(); break;
 				case 0 : System.out.println("\n--- 프로그램 종료 ---\n"); break;
 				default : System.out.println("\n*** 메뉴 번호만 입력해주세요 ***\n");
 				}
@@ -252,18 +294,156 @@ public class ProjectView {
 		}
 	}
 	
+	/**
+	 * 게시글 목록 조회
+	 */
 	private void selectBoardList() {
 		
-		System.out.println("\n게시글 목록 조회\n");
+		System.out.println("\n***** 게시글 목록 조회 *****\n");
 		
 		String result = service.selectBoardList();
 		
 		if (result != null) {
-			System.out.println("\n목록 조회 완료\n");
+			System.out.println(result);
+			System.out.println("\n***** 목록 조회 완료 *****\n");
 		} else {
-			System.out.println("\n목록 조회 실패\n");
+			System.out.println("\n***** 목록 조회 실패 *****\n");
+		}
+	}
+	private void selectBoardList2() {
+		System.out.println("\n***** 게시글 목록 조회 *****\n");
+		
+		List<Board> boardList = service.selectBoardList2();
+		
+		if(boardList.isEmpty()) {
+			System.out.println("\n목록 조회 실패");
+		} else {
+			for(Board b : boardList) {
+				System.out.println(b.toString2());
+			}
+			System.out.println("\n목록 조회 성공");
+		}
+	}
+	/**
+	 * 게시글 상세 조회
+	 */
+	private void selectBoard() {
+		System.out.println("\n***** 게시글 상세 조회 *****\n");
+		
+		System.out.print("게시글 번호 입력 : ");
+		int boardNo = sc.nextInt();
+		
+		// 서비스 메서드 호출 후 결과 반환 받기
+		Board board = service.selectBoard(boardNo);
+		
+		// 조회 결과가 없을 경우
+		if (board == null) {
+			System.out.println("\n***** 게시글이 존재하지 않습니다 *****\n");
+			return;
+		}	
+		// 조회 결과가 있을 경우
+		System.out.printf("[%d] %s \n", board.getBoardNo(), board.getBoardTitle());
+		System.out.println("작성일 : " + board.getBoardCreateDate());
+		System.out.println("조회수 : " + board.getReadCount());
+		
+		System.out.printf("작성자 : %s (%d) \n", board.getMemberNickname(), board.getMemberNo());
+		
+		System.out.println("----------------------------------------------------------");
+		
+		System.out.print(board.getBoardContent());
+		
+		System.out.println("----------------------------------------------------------");
+	}
+	
+	/**
+	 * 게시글 삭제
+	 */
+	private void deleteBoard() {
+		
+		if (loginMember == null) {
+			System.out.println("\n***** 로그인 후 이용해주세요 *****\n");
+			return;
+		}
+		int memberNo = loginMember.getMemberNo();
+		
+		System.out.print("\n게시글 번호 입력 : ");
+		int boardNo = sc.nextInt();
+		
+		int result = service.deleteBoard(boardNo, memberNo);
+		
+		if (result > 0) {
+			System.out.print("\n정말 삭제하시겠습니까?(Y/N) : ");
+			String yn = sc.next();
+			yn = yn.toUpperCase();
+			if (yn.equals("Y")) {
+				int result2 = service.deleteBoard2(boardNo);
+				if(result2 > 0) {
+					System.out.println("\n***** 게시글 삭제 완료 *****\n");
+				} else {
+					System.out.println("\n***** 이미 삭제된 게시글입니다 *****\n");
+				}
+			} else if (yn.equals("N")) {
+				System.out.println("\n게시글 삭제 취소\n");
+			} else {
+				System.out.println("\nY나 N만 입력해주세요");
+			}
+		} else {
+			System.out.println("\n번호가 일치하지 않습니다");
+		}
+		sc.nextLine();
+	}
+	
+	/**
+	 * 게시글 수정
+	 */
+	private void updateBoard() {
+		if(loginMember == null) {
+			System.out.println("\n***** 로그인 후 이용해주세요 *****\n");
+			return;
 		}
 		
+		int memberNo = loginMember.getMemberNo();
 		
+		System.out.print("\n수정할 게시글 번호 입력 : ");
+		int boardNo = sc.nextInt();
+		sc.nextLine();
+		
+		int result = service.updateBoard(memberNo, boardNo);
+		
+		if (result > 0) {
+			System.out.print("\n수정할 제목 : ");
+			String title = sc.nextLine();
+			
+			System.out.print("\n수정할 내용 입력 (입력 종료 : !wq)\n");
+			String content = "";
+			
+			while(true) {
+				String temp = sc.nextLine();
+				if(temp.equals("!wq")) {
+					break;
+				}
+				content += temp + "\n";
+			}
+			
+			int result2 = service.updateBoard2(title, content, boardNo);
+			
+			if (result2 > 0) System.out.println("\n수정 성공!");
+			else System.out.println("\n수정 실패!");;
+			
+		} else {
+			System.out.println("\n번호가 일치하지 않습니다\n");
+		}
+	}
+	
+	/**
+	 * 로그아웃
+	 */
+	private void logout() {
+		if(loginMember == null) {
+			System.out.println("\n로그인 상태에서 이용할 수 있습니다\n");
+			return;
+		}
+		System.out.println("\n로그아웃 성공\n");
+		loginMember = null;
 	}
 }
