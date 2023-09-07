@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12_HTML실습문제_3</title>
+</head>
+<body>
+  <h1>회원 가입</h1>
+  <form action="12_result.html" target="_blank">
+    <fieldset>
+      <legend>필수 입력 사항</legend>
+      <table>
+        <tr>
+          <th>ID</th>
+          <td><input type="text" placeholder="아이디 10글자 이내" name="inputId"> <button>중복 확인</button></td>
+        </tr>
+        <tr>
+          <th>비밀번호</th>
+          <td><input type="password" name="inputPw" id="" placeholder="영문,숫자,특수문자 포함 8자 이상" size="30"></td>
+        </tr>
+        <tr>
+          <th>비밀번호 확인</th>
+          <td><input type="password" name="inputPw2" size="30"></td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td><input type="text" name="inputEmail"> <select name="inputEmail2" id="" style="width: 90px;">
+            <option>직접입력</option>
+            <option>@naver.com</option>
+            <option>@gmail.com</option>
+            <option>@kakao.com</option>
+          </select></td> 
+          
+        </tr>
+      </table>
+    </fieldset>
+    <fieldset>
+      <legend>추가 정보</legend>
+      프로필 사진 <input type="file" name="inputPic" id=""><br><br>
+      성별 : <input type="radio" name="inputGender" id="" value="남자" checked> 남자 <input type="radio" name="inputGender" value="여자"> 여자 <br><br>
+      생년월일 : <input type="date" name="inputBirthday" id="birthday"> <br><br>
+      취미 <br>
+      <input type="checkbox" name="inputHobby" id="" value="야구"> 야구 <input type="checkbox" name="inputHobby" id="" value="농구"> 농구 
+      <input type="checkbox" name="inputHobby" id="" value="축구"> 축구 <br>
+      <input type="checkbox" name="inputHobby" id="" value="공부" checked> 공부 <input type="checkbox" name="inputHobby" id="" value="음악감상"> 음악감상 <br>
+      <input type="checkbox" name="inputHobby" id="" > 기타 <input type="text" id="etc" name="inputHobby">
+      <br><br>
+      자기소개 <br>
+      <textarea name="inputSelfIntro" id="" cols="100" rows="15" style="resize:none"></textarea>
+    </fieldset> <br>
+    &nbsp;&nbsp;&nbsp;<button>회원가입</button> <button type="reset">다시입력</button> <button type="button">이전으로</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결과 페이지</title>
+</head>
+<body>
+    <h1>입력된 아이디 : <span id="id"></span></h1>
+    <h1>입력된 비밀번호 : <span id="pw"></span></h1>
+    <h1>입력된 비밀번호확인 : <span id="pw2"></span></h1>
+    <h1>입력된 이메일 : <span id="email"></span> <span id="email2"></span></h1>
+    <h1>입력된 프로필 사진 : <span id="pic"></span></h1>
+    <h1>선택된 성별 : <span id="gender"></span></h1>
+    <h1>입력된 생년월일 : <span id="birthday"></span></h1>
+    <h1>선택된 취미 : <span id="hobby"></span></h1>
+    <h1>입력된 자기소개 : <span id="selfIntro"></span></h1>
+
+    <script>
+        const id = document.getElementById("id");
+        const pw = document.getElementById("pw");
+        const pw2 = document.getElementById("pw2");
+        const email = document.getElementById("email");
+        const email2 = document.getElementById("email2");
+        const pic = document.getElementById("pic");
+        const gender = document.getElementById("gender");
+        const birthday = document.getElementById("birthday");
+        const hobby = document.getElementById("hobby");
+        const selfIntro = document.getElementById("selfIntro");
+        
+        const params = new URL(location.href).searchParams;
+        id.innerText = params.get("inputId");
+        pw.innerText = params.get("inputPw");
+        pw2.innerText = params.get("inputPw2");
+        email.innerText = params.get("inputEmail");
+        email2.innerText = params.get("inputEmail2");
+        pic.innerText = params.get("inputPic");
+        gender.innerText = params.get("inputGender");
+        birthday.innerText = params.get("inputBirthday");
+        hobby.innerText = params.getAll("inputHobby");
+        selfIntro.innerText = params.get("inputSelfIntro");
+    </script>
+</body>
+</html>
