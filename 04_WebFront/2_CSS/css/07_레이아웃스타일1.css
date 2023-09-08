@@ -1,0 +1,156 @@
+.area1{background-color: red}
+.area2{background-color: orange}
+.area3{background-color: yellow}
+.area4{background-color: green}
+.area5{background-color: blue;}
+
+.block{
+  border: 1px solid black;
+  width: 150px;
+  height: 150px;
+  color: white;
+  
+  /* 요소의 보여지는 형식을 block으로 지정 */
+  display: block;
+}
+
+.inline{
+  /* 요소의 보여지는 형식을 inline으로 지정 */
+  display: inline;
+}
+
+.inline-block{
+  /* 요소의 보여지는 형식을 inline-block으로 지정 */
+  display: inline-block;
+}
+
+/* ------------------------------------------- */
+
+/* 상하 2분할 */
+
+/* 감싸는 요소 */
+.container-1{
+  border: 3px solid black;
+  width: 300px;
+  height: 500px;
+}
+
+/* 내부 영역 분할 요소 */
+.container-1 > div{
+  /* 가변 크기 단위(%) : 감싸고 있는 요소의 크기에 따라 지정 */
+  width: 100%;
+  height: 50%;
+}
+
+.container-1 > div:first-child{background-color: green;}
+.container-1 > div:last-child{background-color: orange}
+
+/* 내부 영역 분할 요소 */
+/* display : block 요소의 특징을 알면 삭제 가능 */
+.container-2{
+  border: 3px solid black;
+  width: 300px;
+  height: 600px;
+}
+
+.container-2>div:first-child{
+  background-color: aquamarine;
+  height: 20%;
+}
+
+.container-2>div:nth-of-type(2){
+  background-color: cadetblue;
+  height: 30%;
+}
+
+.container-2>div:last-child{
+  background-color: brown;
+  height: 50%;
+}
+
+/* --------------------------------------- */
+
+/* 좌우 2분할 */
+.container-3{
+  border: 3px solid black;
+  width: 400px;
+  height: 200px;
+}
+
+/* 내부 분할 요소 (2개 있음) */
+.container-3>div{
+  height: 100%;
+  width: 50%;
+  display : inline-block;
+}
+
+.container-3>div:nth-child(1){background-color: darkgreen;}
+.container-3>div:nth-child(2){background-color: darkolivegreen;}
+
+.container-4{
+  border: 3px solid black;
+  width: 600px;
+  height: 300px;
+}
+
+.container-4>div{
+  height: 100%;
+  display: inline-block;
+}
+
+.container-4>div:first-child{
+  width: 30%;
+  background-color: darkgray;
+}
+
+.container-4>div:nth-of-type(2){
+  width: 50%;
+  background-color: coral;
+}
+
+.container-4>div:last-child{
+  width: 20%;
+  background-color: darkolivegreen;
+}
+
+.container-5{
+  border: 3px solid black;
+  width: 500px;
+  height: 500px;
+}
+.container-5>div:nth-child(1){
+  width: 100%;
+  height: 50%;
+}
+.container-5>div>div:nth-child(1){
+  background-color: red;
+  height: 100%;
+  width: 25%;
+  display: inline-block;
+}
+.container-5>div>div:nth-child(2){
+  background-color: orange;
+  height: 100%;
+  width: 25%;
+  display: inline-block;
+}
+.container-5>div>div:nth-child(3){
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+}
+.container-5>div>div>div:nth-child(1){
+  background-color: yellow;
+  width: 100%;
+  height: 50%;
+}
+.container-5>div>div>div:nth-child(2){
+  background-color: green;
+  width: 100%;
+  height: 50%;
+}
+.container-5>div:nth-child(2){
+  background-color: blue;
+  width: 100%;
+  height: 50%;
+}
