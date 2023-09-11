@@ -1,0 +1,146 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing:border-box;
+}
+
+div{border: 1px solid black;}
+
+/* 감싸는 요소(기준) */
+.container-1{
+  width: 304px;
+  height: 304px;
+  border: 2px dashed red;
+
+  /* 현재 요소가 기준 */
+  position: relative;
+}
+
+.first{
+  width: 300px;
+  height: 300px;
+  background-color: darkolivegreen;
+
+  position: absolute;
+  /* absolute
+    - 다른 요소 겹치기 가능
+    - top/bottom/left/right로 위치 지정 가능
+    - 기준점이 정해져 있지 않으면
+      body 태그 기준으로 배치가 된다
+
+    - 감싸는 요소에 relative가 설정되어 있다면
+      감싸는 요소를 기준으로 배치된다
+  */
+
+  /* 위쪽으로 0px 만큼 떨어져 배치 */
+  top: 0px;
+  /* 왼쪽으로 0px 만큼 떨어져 배치 */ 
+  left: 0px;
+
+  z-index: 1;
+}
+
+.second{
+  width: 200px;
+  height: 200px;
+
+  position: absolute;
+  background-color: blueviolet;
+
+  /* 기준 요소로 부터 위로 50px 만큼 떨어진 위치 */
+  top: 50px;
+
+  /* 기준 요소로 부터 오른쪽으로 50px 만큼 떨어진 위치 */
+  right: 50px;
+
+  z-index: 100;
+}
+
+.third{
+  width: 100px;
+  height: 100px;
+  background-color: red;
+
+  position: absolute;
+
+  /* 정 가운데 배치 */
+  top: 100px; /* == bottom:100px */
+  left: 100px; /* == right:100px */
+
+  z-index: 200;
+}
+
+/* 정 가운데 배치하기 */
+
+.container-2{
+  width: 450px;
+  height: 360px;
+  position: relative; /* 기준 */
+}
+
+.center{
+  width: 50px;
+  height: 50px;
+  background-color: yellow;
+
+  /* 기준 요소 위치를 기준으로 배치 */
+  position: absolute;
+
+  /* 사방에서 잡아 당김 */
+  top: 0; /* 0 == 0px, 1 != 1px */
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /* margin : auto;
+    - 기본적으로는 좌우 가운데 정렬
+    - 지금 같은 상황에서는 상하좌우 가운데 정렬
+  */
+  margin: auto;
+}
+
+/* fixed */
+.fixed-area{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  /* 특정 위치에 고정하기(브라우저 기준) */
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: whitesmoke;
+}
+
+.fixed-area>a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center; /* 내용 가운데 정렬 */
+  text-decoration: none; /* 밑줄 삭제 */
+
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 30px; /* 장평 */
+  color: black;
+
+  /* 블록 못하게 */
+  user-select: none;
+}
+
+/* position : sticky
+  원래 요소가 보여지는 영역이라면 position X
+  요소가 보여지는 화면을 벗어나면 fixed
+*/
+#title{
+  background-color: dodgerblue;
+  color: white;
+  padding: 100px 20px 20px; /* 상 좌우 하 */
+
+  /* 화면 넘어가면 고정 */
+  position: sticky;
+
+  /* 어느 위치에 고정? */
+  top: -80px;
+  z-index: 1000;
+}
