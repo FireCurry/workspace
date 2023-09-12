@@ -1,3 +1,21 @@
+@font-face {
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'MBC1961GulimM';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/MBC1961GulimM.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HakgyoansimWoojuR';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 *{
   box-sizing: border-box;
   padding: 0;
@@ -10,7 +28,7 @@ span{
 /* ---------- header ---------- */
 header{
   width: 1140px;
-  height: 200px;
+  height: 100px;
   display: flex;
 }
 header>section:nth-of-type(1){width: 20%;}
@@ -34,6 +52,7 @@ header>section:nth-of-type(3){width: 20%;}
   color: black;
   margin: 0 10px;
   user-select: none;
+  font-family: 'HakgyoansimWoojuR';
 }
 .id-pw span{
   user-select: none;
@@ -47,19 +66,20 @@ nav{
 
   background-color: white;
   z-index: 1000;
-  border-bottom: 2px solid black;
 }
 nav>ul{
   display: flex;
   list-style: none; /* li 앞에 기호 제거 */
   height: 100%;
   justify-content: space-around;
+  align-items: center;
 }
 nav a{
   text-decoration: none;
   color: black;
   font-weight: bold;
   font-size: 20px;
+  font-family: 'SUITE-Regular';
 }
 /* -----------------main---------------- */
 body{
@@ -67,6 +87,7 @@ body{
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  border-top: 3px solid green;
 }
 main{
   width: 100%;
@@ -80,6 +101,152 @@ main{
 .content-1>a{
   width: 2000px;
 }
+.maejang{
+  width: 500px;
+  height: 80px;
+  position: relative;
+  left: 350px;
+  bottom: 50px;
+  display: flex;
+  
+}
+.maejang>a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  text-decoration: none;
+  font-family: 'SUITE-Regular';
+}
+.maejang>a:first-child{
+  border-top-left-radius: 30px;
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+}
+.maejang>a:last-child{
+  border-bottom-right-radius: 30px;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+}
+.content-2{
+  width: 1140px;
+  height: 500px;
+  position: relative;
+}
+.right-btn{
+  position : absolute;
+  right: -80px;
+  bottom: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'HakgyoansimWoojuR';
+  color: darkgrey;
+  border-radius: 50%;
+}
+.right-btn:hover, .right-btn + a:hover{
+  background-color: darkorange;
+  color: black;
+}
+.right-btn + a{
+  position : absolute;
+  left: -80px;
+  bottom: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'HakgyoansimWoojuR';
+  color: darkgrey;
+  border-radius: 50%;
+}
+
+.bread{
+  width: 100%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+}
+.bread>a{
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+.content-3{
+  width: 100%;
+  height: 700px;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+}
+.content-2>section:first-child{
+  height: 30%;
+  display: flex;
+}
+.menu{
+  width: 60%;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 10px;
+  font-family: 'MBC1961GulimM';
+}
+.menu + section{
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.menu + section>a{
+  text-decoration: none;
+  color: darkgray;
+  font-weight: bold;
+  font-family: 'HakgyoansimWoojuR';
+}
+.menu + section>a:hover{
+  color: green;
+}
+.content-4{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 1140px;
+  height: 100px;
+}
+.content-4>a{
+  text-decoration: none;
+  color: black;
+  display: flex;
+  font-family: 'HakgyoansimWoojuR';
+}
+.content-4>a>section:last-child{
+  display: flex;
+  flex-direction: column;
+  margin: 0 5px;
+}
+.content-4>a>section:last-child>section:first-child{
+  height: 60%;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+.content-4>a>section:last-child>section:last-child{
+  height: 40%;
+}
 /* ---------- footer ---------- */
 footer{
   display: flex;
@@ -88,11 +255,13 @@ footer{
   width: 100%;
   border-top: 1px solid black;
   background-color: rgb(39, 37, 37);
+  font-family: 'HakgyoansimWoojuR';
 }
 footer>section:first-child{
   height: 40%;
   display: flex;
   justify-content: center;
+  border-bottom: 1px solid darkgray;
 }
 footer>section:last-child{
   height: 60%;
@@ -144,6 +313,7 @@ footer a{
   display: flex;
   align-items: center;
   color: darkgray;
+  
 }
 .sec2-1-2>a>img{
   border-radius: 50%;
