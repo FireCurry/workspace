@@ -19,15 +19,15 @@
   /* justify-content: flex-start; */
   /* justify-content: flex-end; */
   /* justify-content: center; */
-  justify-인식content: space-around;
-  justify-content: space-evenly;
+  /* justify-content: space-around; */
+  /* justify-content: space-evenly; */
   justify-content: space-between;
 
   /* align-items : 교차축을 기준으로 item 정렬 */
   /* 기본값 */
   /* 원래는 교차축 방향으로 늘어나는데 height 지정을 해놔서 확인 X */
   /* .item의 height를 삭제하면 확인 가능 */
-  /* align-items: stretch; */
+  align-items: stretch;
   /* align-items: flex-start; */
   /* align-items: flex-end; */
   /* align-items: center; */

@@ -1,0 +1,150 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+main, div, nav, header, footer, article, section, body,
+span{
+  border: 1px solid black;
+}
+/* ---------- header ---------- */
+header{
+  width: 1140px;
+  height: 200px;
+  display: flex;
+}
+header>section:nth-of-type(1){width: 20%;}
+header>section:nth-of-type(2){
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header>section:nth-of-type(3){width: 20%;}
+#home-logo{
+  width: 200px;
+}
+.id-pw{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.id-pw a{
+  text-decoration: none;
+  color: black;
+  margin: 0 10px;
+  user-select: none;
+}
+.id-pw span{
+  user-select: none;
+}
+/* ---------- nav ---------- */
+nav{
+  width: 1140px;
+  height: 50px;
+  position: sticky; /* 화면을 벗어나면 특정 위치에 고정 */
+  top: 0; /* 최상단에 붙임 */
+
+  background-color: white;
+  z-index: 1000;
+  border-bottom: 2px solid black;
+}
+nav>ul{
+  display: flex;
+  list-style: none; /* li 앞에 기호 제거 */
+  height: 100%;
+  justify-content: space-around;
+}
+nav a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+/* -----------------main---------------- */
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+main{
+  width: 100%;
+  flex-grow: 1; /* 중심축 방향 팽창 비율, main이 화면을 계속 차지하면서 footer를 밑으로 밀어냄 */
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* content */
+.content-1>a{
+  width: 2000px;
+}
+/* ---------- footer ---------- */
+footer{
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  width: 100%;
+  border-top: 1px solid black;
+  background-color: rgb(39, 37, 37);
+}
+footer>section:first-child{
+  height: 40%;
+  display: flex;
+  justify-content: center;
+}
+footer>section:last-child{
+  height: 60%;
+  display: flex;
+  justify-content: center;
+}
+footer>section>section:first-child{
+  width: 1140px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  
+}
+footer a{
+  text-decoration: none;
+  margin-right: 10px;
+  color: darkgray;
+}
+.sec2-1{
+  width: 1140px;
+  display: flex;
+}
+.sec2-1-1{width: 86%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sec2-1-2{width: 7%; height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sec2-1-3{width: 7%; height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sec2-1-1-1{
+  width: 100%; height: 30%;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: darkgray;
+}
+.sec2-1-1-1>span{margin: 0 5px;}
+.sec2-1-1-2{
+  width: 100%; height: 30%;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  color: darkgray;
+}
+.sec2-1-2>a>img{
+  border-radius: 50%;
+}
