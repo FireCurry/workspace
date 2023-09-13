@@ -1,3 +1,4 @@
+/* ----- web font ----- */
 @font-face {
   font-family: 'SUITE-Regular';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
@@ -16,18 +17,26 @@
   font-weight: normal;
   font-style: normal;
 }
+/* ----- 기본 설정 ----- */
 *{
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
-main, div, nav, header, footer, article, section, body,
-span{
-  border: 1px solid black;
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  border-top: 3px solid green;
 }
+/* main, div, nav, header, footer, article, section, body,
+span, p{
+  border: 1px solid black;
+} */
 /* ---------- header ---------- */
 header{
-  width: 1140px;
+  width: 1280px;
   height: 100px;
   display: flex;
 }
@@ -42,30 +51,26 @@ header>section:nth-of-type(3){width: 20%;}
 #home-logo{
   width: 200px;
 }
-.id-pw{
+.sec-login{
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.id-pw a{
+.sec-login a{
   text-decoration: none;
   color: black;
   margin: 0 10px;
   user-select: none;
   font-family: 'HakgyoansimWoojuR';
 }
-.id-pw span{
+.sec-login span{
   user-select: none;
 }
 /* ---------- nav ---------- */
 nav{
-  width: 1140px;
-  height: 50px;
-  position: sticky; /* 화면을 벗어나면 특정 위치에 고정 */
-  top: 0; /* 최상단에 붙임 */
-
+  width: 1280px;
+  height: 70px;
   background-color: white;
-  z-index: 1000;
 }
 nav>ul{
   display: flex;
@@ -73,6 +78,33 @@ nav>ul{
   height: 100%;
   justify-content: space-around;
   align-items: center;
+
+}
+nav>ul:hover ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+nav>ul:hover section{
+  display: flex;
+}
+nav>ul>li>section{
+  display: none;
+  position: absolute;
+  width: 100vw;
+  height: 300px;
+  background-color: white;
+  z-index: 1;
+  left: 0;
+}
+nav>ul>li>section:hover{
+  display: none;
+
+}
+nav>ul>li{
+  width: 200px;
+  /* position: relative; */
+  text-align: center;
 }
 nav a{
   text-decoration: none;
@@ -81,14 +113,24 @@ nav a{
   font-size: 20px;
   font-family: 'SUITE-Regular';
 }
-/* -----------------main---------------- */
-body{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  border-top: 3px solid green;
+nav>ul>li>ul{
+  list-style: none;
+  display: none;
+  position: absolute;
+  width: 200px;
+  padding-top: 40px;
+  z-index: 2;
 }
+nav>ul>li>ul>li{
+  margin: 10px 0;
+  text-align: center;
+  
+}
+nav>ul>li>ul>li>a{
+  font-size: 17px;
+  color: darkgray;
+}
+/* -----------------main---------------- */
 main{
   width: 100%;
   flex-grow: 1; /* 중심축 방향 팽창 비율, main이 화면을 계속 차지하면서 footer를 밑으로 밀어냄 */
@@ -117,6 +159,7 @@ main{
   width: 50%;
   text-decoration: none;
   font-family: 'SUITE-Regular';
+  font-size: 20px;
 }
 .maejang>a:first-child{
   border-top-left-radius: 30px;
@@ -130,8 +173,9 @@ main{
   color: white;
   font-weight: bold;
 }
+/* content-2 */
 .content-2{
-  width: 1140px;
+  width: 1280px;
   height: 500px;
   position: relative;
 }
@@ -179,19 +223,27 @@ main{
   height: 60%;
   display: flex;
   align-items: center;
+  font-family: 'HakgyoansimWoojuR';
+  align-items: baseline;
 }
 .bread>a{
   margin: 0 10px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-decoration: none;
 }
-.content-3{
-  width: 100%;
-  height: 700px;
-  background-color: lightgray;
-  display: flex;
-  flex-direction: column;
+.bread>a>article{
+  font-size: 14px;
+  color: darkgray;
 }
+.bread>a>article:first-of-type{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: black;
+}
+
 .content-2>section:first-child{
   height: 30%;
   display: flex;
@@ -220,12 +272,163 @@ main{
 .menu + section>a:hover{
   color: green;
 }
+.menu>img{
+  position: absolute;
+  z-index: -1;
+  left: -15px;
+  top: 40px;
+}
+.eggmayo, .italian-bmt, .blt, .ham{
+  position: relative;
+}
+
+.question{
+  position: absolute;
+  top: 120px;
+  display: none;
+}
+
+.eggmayo:hover>.question, .italian-bmt:hover>.question,
+.blt:hover>.question, .ham:hover>.question{
+  display: block;
+}
+/* content-3 */
+.content-3{
+  width: 100%;
+  height: 700px;
+  background-image: url(../../images/백그라운드.gif);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content-3>section{
+  width: 1280px;
+  height: 300px;
+  display: flex;
+  margin: 10px 0;
+  justify-content: space-between;
+  position: relative;
+  font-family: 'SUITE-Regular';
+}
+.content-3-1 *{
+  color: white;
+}
+.content-3-1-1{
+  width: 400px;
+  background-image: url(../../images/백그라운드2.png);
+  background-size: auto;
+  background-repeat: no-repeat;
+  font-size: 27px;
+  font-weight: bold;
+}
+.content-3-1-1>a{
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 20px;
+  text-decoration: none;
+  position: absolute;
+  font-size: 18px;
+  left: 40px;
+  bottom: 40px;
+}
+.content-3-1-2{
+  width: 800px;
+  background-image: url(../../images/백그라운드3.png);
+  background-size: auto;
+  background-repeat: no-repeat;
+  font-size: 27px;
+  font-weight: bold;
+}
+.content-3-1-1>p{
+  position: absolute;
+  left: 35px;
+  top: 35px;
+}
+.content-3-1-2>a{
+  width: 150px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 20px;
+  text-decoration: none;
+  position: absolute;
+  font-size: 18px;
+  right: 240px;
+  bottom: 40px;
+}
+.content-3-1-2>p{
+  position: absolute;
+  right: 120px;
+  top: 35px;
+}
+.content-3-2-1{
+  width: 70%;
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+}
+.content-3-2-1>section:first-child{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+}
+.content-3-2-1>section:first-child>p:first-of-type{
+  font-size: 30px;
+  font-family: 'MBC1961GulimM';
+  font-weight: bold;
+  z-index: 1;
+}
+.content-3-2-1>section:first-child>p:last-of-type{
+  font-size: 15px;
+  margin: 20px 0;
+  z-index: 1;
+}
+.menu-news{
+  position: absolute;
+  left: 65px;
+  top: 73px;
+}
+.content-3-2-1>section:last-child{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+}
+.content-3-2-1>section:last-child>a{
+  margin: 10px 0;
+  text-decoration: none;
+  color: darkgray;
+}
+.content-3-2-1>section:last-child>a:not(:last-child){
+  color: black;
+}
+.content-3-2-1>section:last-child>a:not(:last-child):hover{
+  color: green;
+  text-decoration: underline;
+}
+.content-3-2>a>img{
+  position: absolute;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  right: 30px;
+}
 .content-4{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 1140px;
-  height: 100px;
+  width: 1280px;
+  height: 150px;
 }
 .content-4>a{
   text-decoration: none;
@@ -236,7 +439,7 @@ main{
 .content-4>a>section:last-child{
   display: flex;
   flex-direction: column;
-  margin: 0 5px;
+  margin: 0 20px;
 }
 .content-4>a>section:last-child>section:first-child{
   height: 60%;
@@ -269,7 +472,7 @@ footer>section:last-child{
   justify-content: center;
 }
 footer>section>section:first-child{
-  width: 1140px;
+  width: 1280px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -281,7 +484,7 @@ footer a{
   color: darkgray;
 }
 .sec2-1{
-  width: 1140px;
+  width: 1280px;
   display: flex;
 }
 .sec2-1-1{width: 86%; height: 100%;
@@ -315,6 +518,24 @@ footer a{
   color: darkgray;
   
 }
-.sec2-1-2>a>img{
+.sec2-1-2>a{
+  background-image: url(../../images/인스타.png);
+  background-size: 126px;
   border-radius: 50%;
+  width: 70%;
+  height: 70%;
+}
+.sec2-1-2>a:hover{
+  background-position: 63px 0;
+}
+
+.sec2-1-3>a{
+  background-image: url(../../images/페이스북.png);
+  background-size: 126px;
+  border-radius: 50%;
+  width: 70%;
+  height: 70%;
+}
+.sec2-1-3>a:hover{
+  background-position: 63px 0;
 }

@@ -1,0 +1,20 @@
+div.ex1 {
+  overflow: scroll;
+  background-color: red;
+}
+
+div.ex2 {
+  overflow: hidden;
+}
+
+div.ex3 {
+  overflow: auto;
+}
+
+div.ex4 {
+  overflow: clip;
+}
+
+div.ex5 {
+  overflow: visible;
+}
