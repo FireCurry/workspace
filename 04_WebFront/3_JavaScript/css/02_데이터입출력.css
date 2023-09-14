@@ -1,0 +1,31 @@
+*{
+  box-sizing: border-box;
+}
+.box{
+  width: 500px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+.box2{
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  border: 2px solid red;
+}
+
+.container2{
+  width: 520px;
+  height: 300px;
+  border: 1px solid black;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+
+  /* overflow : 자식 요소가 부모 요소를 초과했을 때에 대한 설정 */
+  /* auto : 자식이 부모를 넘기전엔 변화가 없다가
+            넘어서는 순간 스크롤 생성 */
+  overflow: auto;
+  background-color: darkolivegreen;
+}

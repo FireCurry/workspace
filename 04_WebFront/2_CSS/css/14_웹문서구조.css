@@ -5,9 +5,9 @@
 }
 
 /* 다 만들고 나서 삭제할 예정 */
-div, main, header, footer, section, article, nav, aside, form{
+/* div, main, header, footer, section, article, nav, aside, form{
 border: 1px solid black;
-}
+} */
 
 body{
   display: flex;
