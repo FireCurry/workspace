@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'SUITE-Regular';
+}
+/* div{
+  border: 1px solid black;
+} */
+/* 색 부분 */
+.first{
+  width: 100vw;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+}
+.first>div{
+  height: 70%;
+  margin: 120px 20px 20px 20px;
+  width: 300px;
+}
+.first>div>div:first-of-type{
+  height: 80%;
+  border-radius: 15px;
+  border: 0.2px dotted gray;
+}
+.first>div>div:last-of-type{
+  height: 20%;
+  margin-top: 10px;
+}
+input{
+  width: 100%;
+  height: 100%;
+  font-size: 30px;
+  overflow: auto;
+  border-radius: 15px;
+  text-align: center;
+  border: 0.2px dotted gray;
+}
+/* 색상 변경 */
+.second{
+  display: flex;
+  justify-content: center;
+  height: 50px;
+}
+button{
+  font-size: 30px;
+  font-weight: bold;
+  width: 70%;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  border: 2px solid black;
+}
+button:hover{
+  background-color: black;
+  color: white;
+}

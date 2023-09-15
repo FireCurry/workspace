@@ -72,7 +72,6 @@ function nameTest(){
   div.innerHTML = str
                 + "<br><br>"
                 + "선택된 input 개수 : " + count;
-
 }
 
 // CSS 선택자로 접근하기
@@ -94,3 +93,44 @@ function cssTest(){
   arr[0].style.backgroundColor = "tomato";
   arr[1].style.backgroundColor = "yellowgreen";
 }
+
+function readValue(){
+  const bg = document.querySelector("#chatting-bg");
+  const input = document.querySelector("#user-input");
+
+  // 입력요소.value : 값 읽어오기
+  // "문자열".length : 문자열의 길이
+  // "문자열".trim() : 양쪽 공백 제거
+  // 입력요소.value.trim.length == 0 : 아무것도 입력하지 않았다면
+
+  if(input.value.trim().length ==0){
+    alert("채팅 내용을 입력해주세요");
+  } else{ // 입력 했을 때
+    bg.innerHTML += "<p><span>"+input.value+"</span></p>"
+
+    // 요소.scrollHeight : 스크롤 전체 높이
+    // 요소.scrollTop : 요소 내부 스크롤의 위치 반환
+    // 요소.scrollTop = 높이 : 스크롤 위치를 해당 높이로 이동
+
+    bg.scrollTop = bg.scrollHeight;
+  }
+
+  // input에 작성된 값 지우기
+  input.value = ""; // 빈 문자열을 값으로 대입
+
+  // input에 포커스 맞추기
+  input.focus(); // 요소.focus() : 해당 요소에 포커스 맞춤
+}
+
+// 아이디가 user-input인 요소에서
+// 키보드 키가 올라올 때(keyup) 동작(function(){})을 수행해라
+document.querySelector("#user-input").addEventListener("keyup", function(e){
+
+  // e : 이벤트 객체(발생한 이벤트 정보를 가지고 있는 객체)
+  // e.key : 입력한 키 반환
+  // console.log(e);
+
+  if(e.key == "Enter"){ // 엔터 키를 입력한 경우
+    readValue(); // 채팅창에 출력하는 함수를 호출
+  }
+});
