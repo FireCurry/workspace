@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test2</title>
+  <link rel="stylesheet" href="../css/test2.css">
+</head>
+<body>
+
+  <div class="container">
+    <table>
+      <tr>
+        <th>너비 : </th>
+        <td><input type="number" id="width"> px</td>
+        <th>높이 : </th>
+        <td><input type="number" id="height"> px</td>
+      </tr>
+      <tr>
+        <th>글자크기 : </th>
+        <td><input type="number" id="font-size"> px</td>
+        <th>굵기 : </th>
+        <td>
+          <label for="weight1">보통</label><input type="radio" name="weight" id="weight1">
+          <label for="weight2">굵게</label><input type="radio" name="weight" id="weight2">
+        </td>
+      </tr>
+      <tr>
+        <th>글자색 : </th>
+        <td><input type="text" id="color"></td>
+        <th>배경색 : </th>
+        <td><input type="text" id="bg-color"></td>
+      </tr>
+      <tr>
+        <th>가로정렬 : </th>
+        <td colspan="3">
+          <label for="left">왼쪽</label><input type="radio" id="left" name="h-sort">
+          <label for="center">가운데</label><input type="radio" id="h-center" name="h-sort">
+          <label for="right">오른쪽</label><input type="radio" id="right" name="h-sort">
+        </td>
+      </tr>
+      <tr>
+        <th>세로정렬 : </th>
+        <td colspan="3">
+          <label for="top">위</label><input type="radio" name="v-sort" id="top">
+          <label for="v-center">가운데</label><input type="radio" name="v-sort" id="v-center">
+          <label for="bottom">아래</label><input type="radio" name="v-sort" id="bottom">
+        </td>
+      </tr>
+      <tr>
+        <th>출력 문자열 : </th>
+        <td colspan="3"><input type="text" id="text"></td>
+      </tr>
+    </table>
+    <button id="btn">적용하기</button>
+  </div>
+  <div id="output"></div>
+
+
+
+
+
+
+
+
+  <script src="../js/test2.js"></script>
+</body>
+</html>
