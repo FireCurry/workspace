@@ -12,17 +12,17 @@
     <table>
       <tr>
         <th>너비 : </th>
-        <td><input type="number" id="width"> px</td>
+        <td><input type="number" id="width" value="500"> px</td>
         <th>높이 : </th>
-        <td><input type="number" id="height"> px</td>
+        <td><input type="number" id="height" value="200"> px</td>
       </tr>
       <tr>
         <th>글자크기 : </th>
         <td><input type="number" id="font-size"> px</td>
         <th>굵기 : </th>
         <td>
-          <label for="weight1">보통</label><input type="radio" name="weight" id="weight1">
-          <label for="weight2">굵게</label><input type="radio" name="weight" id="weight2">
+          <label for="weight1">보통</label><input type="radio" name="weight" id="weight1" value="normal">
+          <label for="weight2">굵게</label><input type="radio" name="weight" id="weight2" value="bold">
         </td>
       </tr>
       <tr>
@@ -34,17 +34,17 @@
       <tr>
         <th>가로정렬 : </th>
         <td colspan="3">
-          <label for="left">왼쪽</label><input type="radio" id="left" name="h-sort" >
-          <label for="h-center">가운데</label><input type="radio" id="h-center" name="h-sort">
-          <label for="right">오른쪽</label><input type="radio" id="right" name="h-sort">
+          <label for="left">왼쪽</label><input type="radio" id="left" name="h-sort" value="flex-start">
+          <label for="h-center">가운데</label><input type="radio" id="center" name="h-sort" value="center">
+          <label for="right">오른쪽</label><input type="radio" id="right" name="h-sort" value="flex-end">
         </td>
       </tr>
       <tr>
         <th>세로정렬 : </th>
         <td colspan="3">
-          <label for="top">위</label><input type="radio" name="v-sort" id="top">
-          <label for="v-center">가운데</label><input type="radio" name="v-sort" id="v-center">
-          <label for="bottom">아래</label><input type="radio" name="v-sort" id="bottom">
+          <label for="top">위</label><input type="radio" name="v-sort" id="top" value="flex-start">
+          <label for="v-center">가운데</label><input type="radio" name="v-sort" id="v-center" value="center">
+          <label for="bottom">아래</label><input type="radio" name="v-sort" id="bottom" value="flex-end">
         </td>
       </tr>
       <tr>
