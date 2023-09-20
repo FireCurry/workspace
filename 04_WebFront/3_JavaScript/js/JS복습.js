@@ -202,7 +202,7 @@ function diaCheck(board){
     }
     // 우상 -> 좌하 요소에 check 클래스가 있다면
     if(board[i][bingoLength-i-1].classList.contains('check')){
-      count2++
+      count2++;
     }
   }
 
