@@ -1,0 +1,112 @@
+:root{
+  --ball-color-1 : #fbc400;
+  --ball-color-2 : #69c8f2;
+  --ball-color-3 : #ff7272;
+  --ball-color-4 : #aaa;
+  --ball-color-5 : #b0d840;
+
+  --cretae-btn-color : #d43301;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  font-size: 62.5%; /* == 10px */
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1{
+  font-size: 4rem;
+  margin: 1rem;
+}
+
+/* 개수 선택 영역 */
+.input-area{
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border: 0.3rem solid #ccc;
+  padding: 2rem;
+  border-radius: 2rem;
+  min-width: 40rem;
+}
+
+.input-area > h4{
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+
+.input-area label >input[type='number']{
+  width: 8rem;
+}
+
+.create-btn{
+  width: 100%;
+  padding: 0.3rem;
+  margin-top: 0.5rem;
+  border: 0.1rem solid var(--cretae-btn-color);
+  border-radius: 0.5rem;
+  background-color: white;
+  color : var(--cretae-btn-color);
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.create-btn:hover{
+  background-color: var(--cretae-btn-color);
+  color: white;
+}
+
+.create-btn:active{
+  opacity: 0.8;
+}
+
+
+/* 로또 출력 영역 */
+.lotto-area{
+  margin : 2rem 0;
+}
+
+.lotto-area .row{
+  display: flex;
+  justify-content: space-evenly;
+
+  border: 0.2rem solid #ddd;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+}
+
+.lotto-area .row .col{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  color: white;
+  text-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  font-weight: bold;
+}
+
+.ball1{ background-color : var(--ball-color-1)}
+.ball2{ background-color : var(--ball-color-2)}
+.ball3{ background-color : var(--ball-color-3)}
+.ball4{ background-color : var(--ball-color-4)}
+.ball5{ background-color : var(--ball-color-5)}

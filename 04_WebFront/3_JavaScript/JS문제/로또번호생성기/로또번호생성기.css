@@ -1,0 +1,61 @@
+*{
+  box-sizing: border-box;
+  font-family: NanumGothic;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container{
+  border: 2px solid darkgrey;
+  border-radius: 10px;
+  width: 400px;
+  height: 200px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+button{
+  background-color: white;
+  width: 200px;
+  border: 1px solid red;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  height: 30px;
+}
+
+button:hover{
+  background-color: red;
+  color: white;
+}
+
+span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  background-color: black;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.ball-container{
+  border: 1px solid darkgrey;
+  padding: 5px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+  width: 400px;
+}

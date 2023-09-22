@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로또 번호 생성기</title>
+  <link rel="stylesheet" href="로또번호생성기.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+</head>
+<body>
+  <h1>로또 번호 생성기</h1>
+
+  <main>
+    <section class="input-area">
+      <h4>생성할 번호 조합 개수 선택</h4>
+
+      <article>
+        <div>
+          <label><input type="radio" name="count" value="1"> 1회 </label>
+          <label><input type="radio" name="count" value="3"> 3회 </label>
+          <label><input type="radio" name="count" value="5"> 5회 </label>
+          <label><input type="radio" name="count" value="10"> 10회  </label>
+        </div>
+
+        <div>
+          <label> 
+            <input type="radio" name="count" value="-1">
+            <input type="number" min="1" max="100" placeholder="직접입력" id="direct-input"> 회
+          </label>
+        </div>
+
+        <button class="create-btn">생성</button>
+      </article>
+      
+    </section>
+
+
+    <section class="lotto-area">
+    </section> 
+  </main>
+
+  <script src="로또번호생성기.js"></script>
+</body>
+</html>

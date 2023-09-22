@@ -1,0 +1,31 @@
+*{
+  box-sizing: border-box;
+  font-family: NanumGothic;
+}
+
+table{
+  border-collapse: collapse;
+  display: flex;
+  flex-direction: column;
+}
+.number{
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid black;
+  font-size: 30px;
+}
+.number:hover{
+  background-color: aquamarine;
+}
+.number:active{
+  background-color: blueviolet;
+}
+button{
+  margin: 10px 0;
+}
+
+section{
+  margin: 10px 0;
+}
