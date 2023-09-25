@@ -1,0 +1,49 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* border: 1px solid black; */
+  font-family: NanumGothic;
+}
+body{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section{
+  width: 80vw;
+  margin: 20px 0;
+}
+/* #input{
+  
+} */
+#comment>div:last-of-type{
+  display: flex;
+  justify-content: flex-end;
+}
+#comment>div:first-of-type{
+  display: flex;
+  justify-content: space-between
+}
+#input>div:last-of-type{
+  display: flex;
+  height: 200px;
+}
+#input>div:last-of-type>textarea{
+  flex-grow: 1;
+  resize: none;
+  font-size: 20px;
+}
+#input>div:last-of-type>button{
+  width: 200px;
+  font-weight: bold;
+  font-size: 30px;
+}
+#input>div:first-of-type{
+  margin: 10px;
+}
+
+div{
+  padding: 5px;
+}
