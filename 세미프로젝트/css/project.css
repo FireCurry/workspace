@@ -1,0 +1,15 @@
+
+*{
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
+header{
+  display: flex;
+  justify-content: space-evenly;
+}
+.recipe{
+  display: flex;
+  justify-content: space-around;
+}
