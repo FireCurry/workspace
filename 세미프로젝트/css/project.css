@@ -1,9 +1,22 @@
-
+@font-face {
+  font-family: 'TTTtangsbudaejjigaeB';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/TTTtangsbudaejjigaeB.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+:root{
+  font-size: 62.5%;
+  --color-main: #E9B824;
+}
 *{
   box-sizing: border-box;
+  font-family: 'TTTtangsbudaejjigaeB';
 }
 a{
   text-decoration: none;
+}
+body{
+  background-color: #F1EFEF;
 }
 header{
   display: flex;
@@ -12,4 +25,24 @@ header{
 .recipe{
   display: flex;
   justify-content: space-around;
+}
+*{
+  color: var(--color-main);
+}
+.search{
+  background-image: url(../image/pexels-ella-olsson-1640774.jpg);
+  height: 60rem;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#input-search{
+  width: 70rem;
+  height: 6rem;
+  font-size: 3rem;
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem;
 }
