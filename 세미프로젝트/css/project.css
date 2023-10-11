@@ -8,26 +8,51 @@
   font-size: 62.5%;
   --color-main: #E9B824;
 }
+li{
+  list-style-type: none;
+}
+
 *{
+  color: var(--color-main);
   box-sizing: border-box;
   font-family: 'TTTtangsbudaejjigaeB';
+  margin: 0;
+  padding: 0;
+  border: 1px solid black;
 }
 a{
-  text-decoration: none;
+  text-decoration: none !important;
 }
 body{
   background-color: #F1EFEF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
 }
+main{
+  display: flex;
+  flex-direction: column;
+  width: 144rem;
+}
+
+/* 헤더 */
 header{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: center;
+  width: 144rem;
+  height: 10rem;
 }
-.recipe{
+nav{
+  width: 80rem;
+}
+nav>ul{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
-*{
-  color: var(--color-main);
+.title{
+  font-size: 5rem;
 }
 .search{
   background-image: url(../image/pexels-ella-olsson-1640774.jpg);
@@ -36,6 +61,15 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+}
+
+.recipe{
+  display: flex;
+  justify-content: space-around;
+}
+.recipe-title{
+  font-size: 4rem;
 }
 
 #input-search{

@@ -5,19 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project</title>
   <link rel="stylesheet" href="../css/project.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
   <header>
     <h1 class="title"><a href="/">임시 제목</a></h1>
-    <nav>네비게이션</nav>
+    <nav>
+      <ul>
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle btn-lg" data-bs-toggle="dropdown" aria-expanded="false">
+            공지사항
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark ">
+            <li><a class="dropdown-item" href="#">건의사항</a></li>
+            <li><a class="dropdown-item" href="#">QnA</a></li>
+            <li><a class="dropdown-item" href="#">1대1 문의</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle btn-lg" data-bs-toggle="dropdown" aria-expanded="false">
+            공지사항
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="#">건의사항</a></li>
+            <li><a class="dropdown-item" href="#">QnA</a></li>
+            <li><a class="dropdown-item" href="#">1대1 문의</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle btn-lg" data-bs-toggle="dropdown" aria-expanded="false">
+            공지사항
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="#">건의사항</a></li>
+            <li><a class="dropdown-item" href="#">QnA</a></li>
+            <li><a class="dropdown-item" href="#">1대1 문의</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle btn-lg" data-bs-toggle="dropdown" aria-expanded="false">
+            공지사항
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="#">건의사항</a></li>
+            <li><a class="dropdown-item" href="#">QnA</a></li>
+            <li><a class="dropdown-item" href="#">1대1 문의</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle btn-lg" data-bs-toggle="dropdown" aria-expanded="false">
+            공지사항
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="#">건의사항</a></li>
+            <li><a class="dropdown-item" href="#">QnA</a></li>
+            <li><a class="dropdown-item" href="#">1대1 문의</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
     <span class="header-login-signup"><a href="/login">로그인</a>·<a href="/signup">회원가입</a></span>
   </header>
+  <!-- 검색창 -->
+  <section class="search">
+    <input class="input-search" type="search" name="" id="input-search" placeholder="찾고싶은 음식의 재료를 입력해주세요">
+  </section>
   <main class="content">
-    <!-- 검색창 -->
-    <section class="search">
-      <input class="input-search" type="search" name="" id="input-search" placeholder="찾고싶은 음식의 재료를 입력해주세요">
-    </section>
-
     <!-- 레시피 -->
     <h3 class="recipe-title">인기 레시피</h3>
     <section class="recipe">
@@ -48,16 +102,12 @@
       
       
     </section>
-
-
-
-
-
   </main>
 
   <footer>
 
   </footer>
   <script src="../js/project.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
