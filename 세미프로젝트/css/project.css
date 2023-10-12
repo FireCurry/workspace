@@ -8,9 +8,6 @@
   font-size: 62.5%;
   --color-main: #E9B824;
 }
-li{
-  list-style-type: none;
-}
 
 *{
   color: var(--color-main);
@@ -18,12 +15,14 @@ li{
   font-family: 'TTTtangsbudaejjigaeB';
   margin: 0;
   padding: 0;
+  list-style: none;
   /* border: 1px solid black; */
 }
 a{
-  text-decoration: none !important;
+  text-decoration: none;
 }
 body{
+  /* background-color:#e5e5e5 */
   background-color: #F1EFEF;
   display: flex;
   flex-direction: column;
@@ -37,16 +36,39 @@ main{
 }
 
 /* 헤더 */
-header{
+.header{
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 15rem;
+  transition: 1s;
+}
+.head-wrapper{
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 144rem;
-  height: 10rem;
-  margin-bottom: 2rem;
+  height: 15rem;
+  position: relative;
 }
+
 nav{
   width: 80rem;
+}
+.menu{
+  font-size: 2.5rem;
+}
+.dropdown{
+  position: relative;
+}
+.dropdown>ul{
+  position: absolute;
+  width: 100%;
+  top: 10rem;
+}
+.dropdown>ul>li{
+  text-align: center;
+  font-size: 1.5rem;
 }
 nav>ul{
   display: flex;
@@ -57,15 +79,18 @@ nav>ul{
 }
 .search{
   background: url(../image/AdobeStock_434309168.jpeg) no-repeat center;
+  background-color: cadetblue;
   height: 60rem;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   background-size: cover;
-  background-repeat: no-repeat;
+  position: relative;
 }
-
+/* .li-container{
+  display: none;
+} */
 .recipe{
   display: flex;
   justify-content: space-around;
