@@ -18,7 +18,7 @@ li{
   font-family: 'TTTtangsbudaejjigaeB';
   margin: 0;
   padding: 0;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 a{
   text-decoration: none !important;
@@ -43,6 +43,7 @@ header{
   align-items: center;
   width: 144rem;
   height: 10rem;
+  margin-bottom: 2rem;
 }
 nav{
   width: 80rem;
@@ -55,25 +56,31 @@ nav>ul{
   font-size: 5rem;
 }
 .search{
-  background-image: url(../image/pexels-ella-olsson-1640774.jpg);
+  background: url(../image/AdobeStock_434309168.jpeg) no-repeat center;
   height: 60rem;
-  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .recipe{
   display: flex;
   justify-content: space-around;
 }
+.recipe-row{
+  width: 30rem;
+  height: 40rem;
+  background-image: url(../image/pexels-ella-olsson-1640774.jpg);
+  border-radius: 2rem;
+}
 .recipe-title{
   font-size: 4rem;
 }
-
 #input-search{
-  width: 70rem;
+  width: 55rem;
   height: 6rem;
   font-size: 3rem;
   border-radius: 1rem;

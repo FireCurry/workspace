@@ -20,6 +20,28 @@
 		사용자가 직접 받을 필요 없이 해당 태그 내에 지정된 형식으로 작성하면 네트워크를 통해 외부 저장소에서 자동으로 얻어와 세팅함. -->
 	<dependencies>
 
+		  <!-- Spring-security -->
+	      <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+	      <dependency>
+	          <groupId>org.springframework.security</groupId>
+	          <artifactId>spring-security-core</artifactId>
+	          <version>5.7.1</version>
+	      </dependency>
+	      
+	      <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+	      <dependency>
+	          <groupId>org.springframework.security</groupId>
+	          <artifactId>spring-security-web</artifactId>
+	          <version>5.7.1</version>
+	      </dependency>
+	      
+	      <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+	      <dependency>
+	          <groupId>org.springframework.security</groupId>
+	          <artifactId>spring-security-config</artifactId>
+	          <version>5.7.1</version>
+	      </dependency>
+		
 		<!-- DBCP(DataBase Connection Pool) 사용을 위한 라이브러리 -->
 		<!-- DB 접속 수 제한해서 서버부하를 줄일 수 있다 -->
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->

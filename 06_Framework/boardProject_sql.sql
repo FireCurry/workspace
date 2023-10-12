@@ -65,7 +65,13 @@ WHERE MEMBER_DEL_FL = 'N'
 AND MEMBER_EMAIL = 'member01@naver.com'
 AND MEMBER_PW = 'pass01' ;
 
+-- 샘플 회원 비밀번호 변경(암호화 적용)
+UPDATE "MEMBER"
+SET MEMBER_PW = '$2a$10$T.8EHdhak0vxjZF7DtW2fu8ruezpMDTYHRiR4Dnl0xJlnfS6icCUu'
+WHERE MEMBER_NO = 1;
 
+COMMIT;
 
+SELECT * FROM "MEMBER";
 
 
