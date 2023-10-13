@@ -8,7 +8,12 @@
   font-size: 62.5%;
   --color-main: #E9B824;
 }
+#test{
+  background-color: #F1EFEF;
 
+  height: 150rem;
+  z-index: 99;
+}
 *{
   color: var(--color-main);
   box-sizing: border-box;
@@ -60,6 +65,8 @@ nav{
 }
 .dropdown{
   position: relative;
+  width: 20rem;
+  text-align: center;
 }
 .dropdown>ul{
   position: absolute;
@@ -69,6 +76,7 @@ nav{
 .dropdown>ul>li{
   text-align: center;
   font-size: 1.5rem;
+  margin: 0.5rem;
 }
 nav>ul{
   display: flex;
@@ -78,8 +86,7 @@ nav>ul{
   font-size: 5rem;
 }
 .search{
-  background: url(../image/AdobeStock_434309168.jpeg) no-repeat center;
-  background-color: cadetblue;
+  background: url(../image/pexels-ella-olsson-1640774.jpg) no-repeat center;
   height: 60rem;
   display: flex;
   justify-content: center;
