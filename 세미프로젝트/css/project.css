@@ -98,17 +98,20 @@ nav>ul{
 /* .li-container{
   display: none;
 } */
-.recipe{
-  display: flex;
-  justify-content: space-around;
-}
+
+
+/* 레시피 */
 .recipe-row{
+  display: flex;
+  justify-content: space-between;
+  width: 144rem;
+}
+.recipe-col{
   width: 30rem;
   height: 40rem;
-  background-image: url(../image/pexels-ella-olsson-1640774.jpg);
   border-radius: 2rem;
 }
-.recipe-title{
+.small-title{
   font-size: 4rem;
 }
 #input-search{
@@ -118,4 +121,57 @@ nav>ul{
   border-radius: 1rem;
   border: none;
   padding: 0.5rem;
+}
+.recipe-image{
+  background-color: black;
+  height: 82%;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+.recipe-name, .recipe-hashtag{
+  height: 9%;
+  font-size: 3rem;
+  text-align: center;
+  border: 0.5rem solid black;
+}
+.recipe-hashtag{
+  border-top: none;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+/* 쿠킹 클래스 */
+.cooking-col1{
+  background-color: gray;
+  display: flex;
+  border-radius: 2rem;
+  width: 68rem;
+  height: 44rem;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.cooking-col2{
+  background-color: #F1EFEF;
+}
+
+.cooking-col2:first-of-type{
+  background-color: aquamarine;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer{
+  height: 20rem;
 }
