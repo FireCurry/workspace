@@ -226,6 +226,24 @@ nav>ul{
   width: 90%;
 }
 
+.signup-row{
+  display: flex;
+  width: 60rem;
+  margin: 2rem;
+}
+
+.signup{
+  width: 30%;
+  color: var(--color-bg);
+  font-size: 2rem;
+}
+
+.input-signup{
+  width: 70%;
+  height: 3rem;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+}
 
 
 
