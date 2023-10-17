@@ -31,8 +31,8 @@ public class MainController {
 		// 로그 출력 방법
 		// log.debug("문자열");
 		
-		log.debug("로그는 이렇게 찍을 수 있습니다");
-		log.debug("메인 페이지 요청이 왔습니다");
+//		log.debug("로그는 이렇게 찍을 수 있습니다");
+//		log.debug("메인 페이지 요청이 왔습니다");
 		
 		/* Thymeleaf 템플릿 엔진 사용시 접두사, 접미사 */
 		// 접두사 : classpath:/templates/

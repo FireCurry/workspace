@@ -42,13 +42,26 @@ public class MemberServiceImpl implements MemberService{
 		return loginMember;
 	}
 	
-	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int signup(Member inputMember) {
+	public int signup(Member inputMember, String[] memberAddress) {
 		
-		int result = mapper.signup(inputMember);
+		// 주소가 입력되지 않은 경우
+		if(inputMember.getMemberAddress().equals(",,")) {
+			inputMember.setMemberAddress(null); // null로 변환
+		}
+		// 주소를 입력한 경우
+		// 배열 -> 문자열로 합쳐서 inputMember에 추가
+		else {
+			String address = String.join("^^^", memberAddress);
+			inputMember.setMemberAddress(address);
+		}
 		
-		return result;
+		// 비밀번호 암호화(DB에 암호화된 비밀번호 저장)
+		String encPw = bcrypt.encode(inputMember.getMemberPw());
+		inputMember.setMemberPw(encPw);
+		
+		// Mapper 메서드 호출
+		return mapper.signup(inputMember);
 	}
 	
 }
