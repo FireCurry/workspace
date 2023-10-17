@@ -83,5 +83,33 @@
     <!-- 다음 주소 API -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="/js/myPage/myPage.js"></script>
+    <script th:inline="javascript">
+
+        const memberAddress = /*[[${session.loginMember.memberAddress}]]*/ "회원 주소";
+
+        // 주소가 있을 경우 (A^^^B^^^C)
+        if(memberAddress != null) {
+            
+            // 1) 문자열을 "^^^" 기준으로 쪼개어 배열로 반환
+            const arr = memberAddress.split("^^^"); // [A,B,C]
+            
+            // 2) name 속성 값이 "memberAddress"인 요소를 모두 얻어옴
+            const inputs = document.querySelectorAll("[name='memberAddress']");
+
+            // 3) input 요소에 arr의 값을 순서대로 대입 (forEach == 향상된 for문)
+
+            // 배열|NodeList.forEach( (item, index) => {} )
+
+            // - 배열|NodeList의 모든 요소를 순차 접근하는 향상된 for문
+            // - item : 현재 접근 중인 요소
+            // - index : 현재 접근 중인 요소의 인덱스
+
+            inputs.forEach( (item, index) => {
+                item.value = arr[index];
+            } );
+        }
+
+
+    </script>
 </body>
 </html>
