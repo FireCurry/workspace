@@ -10,7 +10,12 @@
   --color-bg: #F1EFEF;
   --color-bg2: #FFD384;
 }
-
+input, textarea, select, button{
+  border: none;
+}
+button{
+  cursor: pointer;
+}
 *{
   color: var(--color-main);
   box-sizing: border-box;
@@ -18,7 +23,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 a{
   text-decoration: none;
@@ -332,7 +337,6 @@ nav>ul{
   font-size: 1.8rem;
   padding: 0.5rem 1rem 0;
 }
-
 .report-title{
   margin: 1rem 0;
   border-radius: 0.7rem;
@@ -347,8 +351,19 @@ nav>ul{
   border-radius: 1rem;
   font-size: 2rem;
   padding: 0.5rem 1rem 0;
+  resize: none;
+}
+.report-file{
+  height: 4rem;
+  margin: 1rem 0;
 }
 
+.report-btn{
+  align-self: flex-end;
+  border-radius: 1rem;
+  font-size: 2rem;
+  padding: 0.5rem 1rem 0;
+}
 
 
 

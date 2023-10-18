@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>성공</title>
+</head>
+<body>
+   <h1>[[${searchMember.memberEmail}]] 회원 정보</h1>
+   <h3 th:text="|${param.inputEmail} 회원 정보|"></h3>
+  <table border="1" th:object="${searchMember}">
+    <tr>
+      <th>회원 번호</th>
+      <td th:text="*{memberNo}"></td>
+    </tr>
+    <tr>
+      <th>이메일</th>
+      <td th:text="*{memberEmail}"></td>
+    </tr>
+    <tr>
+      <th>닉네임</th>
+      <td th:text="*{memberNickname}"></td>
+    </tr>
+    <tr>
+      <th>전화 번호</th>
+      <td th:text="*{memberTel}"></td>
+    </tr>
+    <tr>
+      <th>주소</th>
+      <!-- Elvis 연산자 -->
+      <!-- memberAddress가 있으면 memberAddress -->
+      <!-- memberAddress가 없으면 '미입력' -->
+      <td th:utext="*{memberAddress} ?: '미입력'"></td>
+    </tr>
+    <tr>
+      <th>가입일</th>
+      <td th:text="*{enrollDate}"></td>
+    </tr>
+    <tr>
+      <th>권한</th>
+      <th:block th:switch="*{authority}">
+        <td th:case="1">일반 사용자</td>
+        <td th:case="2">관리자</td>
+      </th:block>
+
+    </tr>
+    <tr>
+      <th>탈퇴 여부</th>
+      <td th:text="*{memberDelFl}"></td>
+    </tr>
+  </table>
+  <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
+  <br>
+  <button class="return-btn">돌아가기</button>
+  <button onclick="location.href='main'">돌아가기</button>
+  <script>
+    const returnBtn = document.querySelector('.return-btn');
+    returnBtn.addEventListener('click', ()=>{
+      location.href='main';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실패 페이지</title>
+</head>
+<body>
+  <h1>이메일이 일치하는 회원이 없습니다</h1>
+  <button class="return-btn">돌아가기</button>
+  <button onclick="location.href='main'">돌아가기</button>
+  <script>
+    const returnBtn = document.querySelector('.return-btn');
+    returnBtn.addEventListener('click', ()=>{
+      location.href='main';
+    });
+  </script>
+</body>
+</html>

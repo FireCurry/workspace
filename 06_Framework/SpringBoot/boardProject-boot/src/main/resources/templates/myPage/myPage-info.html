@@ -32,40 +32,36 @@
                     대상 페이지 : http://localhost/myPage/info  (POST)
                     -> 같은 상위 주소(myPage) 하위 같은 레벨(/ 개수) 이므로 대상 페이지 요청 주소 마지막 부분만 작성 
                  -->
-                <form action="info" method="POST" name="myPageFrm" id="updateInfo">
+                <form action="info" method="POST" name="myPageFrm" id="updateInfo" th:object="${session.loginMember}">
 
                     <!-- 로그인된 회원 정보는 sessionScope.loginMember에 존재하고 있음 -->
                     <div class="myPage-row">
                         <label>닉네임</label>
                         <input type="text" name="memberNickname" maxlength="10" 
-                            th:value="${loginMember.memberNickname}" id="memberNickname">             
+                            th:value="*{memberNickname}" id="memberNickname">             
                     </div>
 
                     <div class="myPage-row">
                         <label>전화번호</label>
                         <input type="text" name="memberTel"  maxlength="11" 
-                            th:value="${loginMember.memberTel}" id="memberTel">
+                            th:value="*{memberTel}" id="memberTel">
                     </div>
 
                     <div class="myPage-row info-title">
                         <span>주소</span>
                     </div>
 
-                    
-
-                    <c:set var="addr" value="${fn:split(loginMember.memberAddress, '^^^')}" />
-
                     <div class="myPage-row info-address">
-                        <input type="text" name="memberAddress" placeholder="우편번호" value="${addr[0]}" id="postcode">
+                        <input type="text" name="memberAddress" placeholder="우편번호" id="postcode">
                         <button type="button" onclick="sample6_execDaumPostcode()">검색</button>
                     </div>
 
                     <div class="myPage-row info-address">
-                        <input type="text" name="memberAddress"  placeholder="도로명/지번 주소"  value="${addr[1]}" id="address">                
+                        <input type="text" name="memberAddress"  placeholder="도로명/지번 주소" id="address">                
                     </div>
 
                     <div class="myPage-row info-address">
-                        <input type="text" name="memberAddress"  placeholder="상세 주소"  value="${addr[2]}" id="detailAddress">                
+                        <input type="text" name="memberAddress"  placeholder="상세 주소" id="detailAddress">                
                     </div>
 
                     <button class="myPage-submit">수정하기</button>
