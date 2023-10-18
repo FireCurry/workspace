@@ -6,4 +6,6 @@ public interface AdminService {
 
 	Member selectMember(String inputEmail);
 
+	Member[] selectAllMember();
+
 }

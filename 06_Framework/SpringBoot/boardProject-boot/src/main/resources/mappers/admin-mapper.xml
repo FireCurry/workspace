@@ -14,4 +14,10 @@
     	WHERE MEMBER_EMAIL = #{inputEmail}
 	</select>
 	
+	<select id="selectAllMember" resultType="Member">
+    	SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME , MEMBER_DEL_FL,
+        	MEMBER_TEL , MEMBER_ADDRESS , AUTHORITY ,
+        	TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE 
+    	FROM "MEMBER" ORDER BY MEMBER_NO
+	</select>
 </mapper>

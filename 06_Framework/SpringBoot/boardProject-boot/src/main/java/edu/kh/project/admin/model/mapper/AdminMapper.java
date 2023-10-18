@@ -13,4 +13,6 @@ public interface AdminMapper {
 	 */
 	Member selectMember(String inputEmail);
 
+	Member[] selectAllMember();
+
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모든 회원 조회</title>
+</head>
+<body>
+  <h1 id="haha">모든 회원 조회</h1>
+  <table border="1" class="container">
+    <tr>
+      <th>회원 번호</th>
+      <th>이메일</th>
+      <th>닉네임</th>
+      <th>전화 번호</th>
+      <th>주소</th>
+      <th>가입일</th>
+      <th>권한</th>
+      <th>탈퇴 여부</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+    </tr>
+  </table>
+</body>
+
+<script th:inline="javascript">
+  const haha = document.getElementById('haha');
+  // haha.innerText = /*[[${allMember[1].memberNo}]]*/ "내용";
+  const table = document.querySelector('.container');
+  for(let i = 0 ; i < /*[[${allMember.length}]]*/"숫자" ; i++){
+    const tr = document.createElement('tr');
+    table.append(tr);
+    for(let u = 0; u < 8 ; u++){
+      const td = document.createElement('td');
+      td.innerText = /*[[${allMember[0].memberNo}]]*/ "내용";
+      tr.append(td);
+    }
+  }
+
+</script>
+
+</html>

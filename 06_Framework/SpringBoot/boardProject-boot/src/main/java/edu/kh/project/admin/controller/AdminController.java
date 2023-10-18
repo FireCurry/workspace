@@ -50,6 +50,13 @@ public class AdminController {
 		return "admin/success";
 	}
 	
-	
+	@GetMapping("selectAllMember")
+	public String selectAllMember(Model model) {
+		
+		Member[] allMember = service.selectAllMember();
+//		log.debug("길이" + allMember.length );
+		model.addAttribute("allMember", allMember);
+		return "admin/selectAllMember";
+	}
 	
 }
