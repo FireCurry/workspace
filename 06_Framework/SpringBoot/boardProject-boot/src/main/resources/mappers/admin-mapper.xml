@@ -14,10 +14,45 @@
     	WHERE MEMBER_EMAIL = #{inputEmail}
 	</select>
 	
-	<select id="selectAllMember" resultType="Member">
-    	SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME , MEMBER_DEL_FL,
-        	MEMBER_TEL , MEMBER_ADDRESS , AUTHORITY ,
-        	TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE 
-    	FROM "MEMBER" ORDER BY MEMBER_NO
+	<!-- 전체 회원 조회 -->
+	<!-- Member는 별칭 (DBConfig 클래스) -->
+	<!-- resultType은 1행 결과를 저장할 타입 지정-->
+	<select id="selectAll" resultType="Member">
+    	SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_DEL_FL
+		FROM "MEMBER"
+		ORDER BY MEMBER_NO DESC
 	</select>
+	
+	<!--
+		#{} : 출력 값 양쪽에 '' (홑따옴표) 추가
+		${} : 출력 값 그대로 출력 (홑따옴표 없음)
+	-->
+	
+	<!-- 전체 회원 조회(+정렬) -->
+	<select id="selectSort" resultType="Member">
+    	SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_DEL_FL
+		FROM "MEMBER"
+		ORDER BY ${query}
+	</select>
+	
+	<!-- 탈퇴 복구 -->
+	<update id="restoration">
+		UPDATE "MEMBER" SET
+		MEMBER_DEL_FL = 'N'
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	<!-- 권한 변경 -->
+	<update id="changeAuthority">
+		UPDATE "MEMBER" SET
+		AUTHORITY = DECODE(AUTHORITY, 1, 2, 2, 1)
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	<!-- 비밀번호 초기화 -->
+	<update id="initPw">
+		UPDATE "MEMBER" SET
+		MEMBER_PW = #{memberPw}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
 </mapper>
