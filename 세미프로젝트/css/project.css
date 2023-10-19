@@ -9,6 +9,7 @@
   --color-main: #FF884B;
   --color-bg: #F1EFEF;
   --color-bg2: #FFD384;
+  --padding-font: 0.5rem 1rem 0;
 }
 input, textarea, select, button{
   border: none;
@@ -23,7 +24,7 @@ button{
   margin: 0;
   padding: 0;
   list-style: none;
-  /* border: 1px solid black; */
+  border: 1px solid black;
 }
 a{
   text-decoration: none;
@@ -40,6 +41,7 @@ main{
   display: flex;
   flex-direction: column;
   width: 144rem;
+
 }
 
 /* 헤더 */
@@ -213,8 +215,6 @@ nav>ul{
 .notice *{
   color: black;
 }
-.notice>span{
-}
 .notice>span:first-of-type{
   width: 7%;
 }
@@ -241,6 +241,7 @@ nav>ul{
   padding: 0.5rem;
   font-size: 2rem;
   margin: 1rem 0;
+  padding: 1rem 2rem 0.5rem;
 }
 .cs-subtitle-container{
   width: 90%;
@@ -367,15 +368,115 @@ nav>ul{
 
 
 
+/* 1대1 문의 */
+.inquiry-content{
+  min-height: 20rem;
+}
 
 
+/* 레시피 화면 */
+.media-container{
+  display: flex;
+  height: 50rem;
+  width: 90%;
+  margin: 5rem 0;
+  /* background-color: cadetblue; */
+  padding: 2rem;
+  border-radius: 2rem;
+}
 
+.main-media{
+  width: 60%;
+  background-color: var(--color-bg);
+  height: 100%;
+  border-radius: 2rem;
+}
 
+.recipe-summary{
+  font-size: 4rem; margin: 0;
+  width: 30%;
+  margin-left: 10rem;
+  display: flex;
+  flex-direction: column;
+  /* background-color: var(--color-bg); */
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.recipe-summary *{
+  padding: 1rem 1rem 0;
+  background-color: var(--color-bg);
+  border-radius: 2rem;
+  text-align: center;
+}
 
+.recipe-writer{
+  width: 70%;
+  height: 10rem;
+  background-color: var(--color-bg);
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+}
+.recipe-content{
+  width: 70%;
+  margin: 3rem 0;
+  min-height: 20rem;
+  display: flex;
+  flex-direction: column;
+}
+.recipe-writer-image{
+  height: 8rem;
+  width: 8rem;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+.recipe-writer-nickname{
+  font-size: 2rem;
+  margin: 0 1rem;
+}
+.recipe-writer-info{
+  font-size: 2rem;
+  width: 65rem;
+  margin-left: 2rem
+}
 
+.content{
+  background-color: var(--color-bg);
+  border-radius: 2rem;
+  font-size: 2rem;
+  padding: 0.5rem 1rem 0;
+  min-height: 15rem;
+}
 
+.recipe-subtitle{
+  font-size: 3rem;
+  padding: 0.5rem 1rem 0;
+  margin: 1rem 0;
+}
 
+.recipe-step{
+  padding: var(--padding-font);
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
 
+.recipe-photo{
+  display: flex;
+  justify-content: space-between;
+}
+
+.recipe-photo>div{
+  background-color: var(--color-bg);
+  width: 25rem;
+  height: 30rem;
+  border-radius: 1rem;
+}
+
+.recipe-photos{
+  width: 80%;
+}
 
 
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원가입</title>
+  <title>신고</title>
   <link rel="stylesheet" href="/css/project.css">
 </head>
 <body>
@@ -46,32 +46,21 @@
   </header>
   <main>
     <div class="main-container">
-      <div class="cs-title">
-        <p>회원가입</p>
+      <div class="cs-title">  
+        <p>1대1 문의</p>
       </div>
-      <form action="#" method="POST">
-        <div class="signup-row">
-            <div class="signup">아이디</div>
-            <input type="text" class="input-signup">
+      <form action="" method="" class="reportForm">
+        <div class="category">
+          <select name="" id="" class="select-report">
+            <option value="">레시피</option>
+            <option value="">쿠킹 클래스</option>
+            <option value="">커뮤니티</option>
+          </select>
         </div>
-        <div class="signup-row">
-            <div class="signup">비밀번호</div>
-            <input type="text" class="input-signup">
-        </div>
-        <div class="signup-row">
-            <div class="signup">비밀번호 확인</div>
-            <input type="text" class="input-signup">
-        </div>
-        <div class="signup-row">
-            <div class="signup">이름</div>
-            <input type="text" class="input-signup">
-        </div>
-        <div class="signup-row">
-            <div class="signup">생년월일</div>
-            <input type="text" class="input-signup" placeholder="주민등록번호 앞 6자리를 입력해주세요">
-        </div>
-
-
+        <input type="text" class="report-title" placeholder="제목을 입력해주세요">
+        <textarea name="" id="" cols="30" rows="10" class="report-textarea"></textarea>
+        <input type="file" multiple class="report-file">
+        <button class="report-btn">제출</button>
       </form>
     </div>
   </main>
@@ -91,7 +80,7 @@
 
 
 
-
   <script src="/js/project.js"></script>
+  <script type="text/javascript" src="../../static/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 </body>
 </html>
