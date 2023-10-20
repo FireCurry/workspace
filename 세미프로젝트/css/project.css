@@ -110,6 +110,24 @@ nav>ul{
   transition: 1s;
 }
 
+/* 사이드 메뉴 */
+.sideMenu{
+  position: absolute;
+  background-color: var(--color-bg);
+  border-radius: 2rem;
+  width: 15rem;
+  height: 30rem;
+  top: 3rem;
+  left: 3rem;
+  font-size: 2rem;
+  text-align: center;
+  
+}
+.sideMenu div{
+  margin: 0.5rem;
+}
+
+
 
 /* 레시피 */
 .recipe-row{
@@ -192,6 +210,7 @@ nav>ul{
   z-index: 99;
   border-radius: 2rem;
   padding-bottom: 3rem;
+  position: relative;
 }
 .content-container{
   width: 100%;
@@ -478,6 +497,92 @@ nav>ul{
   width: 80%;
 }
 
+.recipe-review-container{
+  background-color: var(--color-bg);
+  border-radius: 2rem;
+}
+.recipe-review{
+  display: flex;
+  align-items: center;
+  border-radius: 2rem;
+  background-color: var(--color-bg);
+  height: 10rem;
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+.recipe-review-form{
+  display: flex;
+  flex-direction: column;
+}
+.recipe-review-content{
+  height: 90%;
+  width: 70%;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: 0.5px solid #FFD384;
+}
+
+.recipe-review-form button{
+  border-radius: 1rem;
+  margin: 1rem;
+  align-self: flex-end;
+  height: 4rem;
+  width: 14rem;
+  font-size: 2rem;
+  padding: var(--padding-font);
+}
+
+
+/* 유저 정보 */
+.userInfo{
+  width: 70%;
+  margin: 3rem 0;
+  height: 60rem;
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+}
+.userInfo-image{
+  height: 16rem;
+  width: 16rem;
+}
+.userInfo-row{
+  display: flex;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -486,4 +591,7 @@ nav>ul{
 
 footer{
   height: 20rem;
+  background-color: var(--color-main);
+  width: 100vw;
+  margin-top: 3rem;
 }
