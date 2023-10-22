@@ -64,6 +64,7 @@ public class BoardServicImpl implements BoardService {
 	
 	@Override
 	public int updateBoard(Board board) {
+		// 비밀번호가 적혀있는 경우에만 업데이트 가능하게
 		if(board.getBoardPw() != "") {
 			board.setBoardPw(bcrypt.encode(board.getBoardPw()));
 			return mapper.updateBoard(board);

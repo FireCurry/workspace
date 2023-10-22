@@ -38,14 +38,17 @@ public class BoardController {
 		String path = null;
 		String message = null;
 		
+		// insert 성공 시
 		if(result > 0) {
 			path = "redirect:/";
 			message = "글 쓰기 성공";
-		} else {
+		} else { // 실패 시
 			path = "redirect:insert";
 			message = "글 쓰기 실패";
 		}
+		// 리다이렉트 시 잠시동안 session scope에 담아둘 속성 설정
 		ra.addFlashAttribute("message", message);
+		// path에 담긴 주소로 forward
 		return path;
 	}
 
@@ -54,11 +57,13 @@ public class BoardController {
 	public String selectOne(@RequestParam("no") int boardNo,
 			Model model) {
 		
+		// sql 수행후 결과를 board에 담음
 		Board board = service.selectOne(boardNo);
 		
 		// 조회한 정보를 model 객체에 담아 forward할 때 보냄
 		model.addAttribute("board", board);
 		
+		// path에 담긴 주소로 forward
 		return "board/selectOne";
 	}
 	
@@ -107,7 +112,7 @@ public class BoardController {
 			ra.addFlashAttribute("message", "수정 성공");
 			return "redirect:/";
 		}
-		ra.addFlashAttribute("message", "수정 실패");
+		ra.addFlashAttribute("message", "비밀번호를 입력해주세요");
 		return "redirect:selectOne?no=" + board.getBoardNo();
 	}
 }
