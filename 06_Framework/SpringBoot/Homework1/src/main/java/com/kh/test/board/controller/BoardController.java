@@ -79,7 +79,7 @@ public class BoardController {
 			path = "redirect:/";
 			message = "삭제 성공";
 		} else {
-			path = "redirect:deleteBoard";
+			path = "redirect:selectOne?no=" + board.getBoardNo();
 			message = "비밀번호가 일치하지 않습니다";
 		}
 		ra.addFlashAttribute("message", message);
