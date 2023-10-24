@@ -2,6 +2,8 @@ package edu.kh.project.admin.model.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import edu.kh.project.member.model.dto.Member;
+
 @Mapper
 public interface AjaxMapper {
 
@@ -16,5 +18,11 @@ public interface AjaxMapper {
 	 * @return memberTel
 	 */
 	String selectEmail(String inputEmail);
+
+	/** 회원 번호로 회원 정보 조횐
+	 * @param no
+	 * @return
+	 */
+	Member selectMember(int no);
 
 }

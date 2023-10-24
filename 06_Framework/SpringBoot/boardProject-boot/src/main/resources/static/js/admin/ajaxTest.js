@@ -64,3 +64,16 @@ btn2.addEventListener('click', ()=>{
   } )
   .catch( e=>console.log(e) ) // 예외 발생 시 수행
 });
+
+// 회원 번호가 일치하는 회원 정보 모두 조회
+const no2 = document.getElementById("inputMemberNo2");
+const btn3 = document.getElementById("btn3");
+const result3 = document.getElementById("result3");
+
+btn3.addEventListener('click', ()=>{
+  fetch("/ajax/selectMember?no=" + no2.value)
+  .then(resp => {})
+  .then( ()=>{} )
+  .catch( e => console.log(e) );
+
+});

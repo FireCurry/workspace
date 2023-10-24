@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.kh.project.admin.model.service.AjaxService;
+import edu.kh.project.member.model.dto.Member;
 
 @Controller
 @RequestMapping("ajax") // 상위 공통 주소
@@ -59,5 +60,26 @@ public class AjaxController {
 	@ResponseBody
 	public String selectEmail(String inputEmail) {
 		return service.selectEmail(inputEmail);
+	}
+	
+	@GetMapping(value="selectMember", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public Member selectMember(int no) {
+		
+		// Java 객체는 JS에서 사용 불가능!! (왜? 모양부터 다름)
+		
+		// Java 객체 -> JS 객체로 변환 작업 필요!
+		
+		// 1) Java 객체를 JSON으로 변환
+		//	*JSON : JS 객체 모양 문자열 (String)
+		// 	-> HttpMessageConverter가 변환
+		
+		// 2) JSON(문자열) 형태의 데이터를 JS로 전달(응답)
+		//	+ JSON이니까 JS 객체로 변환해서 사용해 라는 구문을 첨부
+		//	-> @XXXMapping() 구문에 produces="application/json; charset=UTF-8" 추가
+		
+		// 3) JS에서 자동으로 JS 객체로 변환되어 사용 가능
+		
+		return service.selectMember(no);
 	}
 }
