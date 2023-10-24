@@ -50,4 +50,14 @@ public class AjaxController {
 		// 비동기 요청한 곳으로 돌아가야되는 값 자체임을 명시하는
 		// 어노테이션 @ResponseBody를 메서드 위에 추가
 	}
+	
+	/** 이메일로 전화번호 조회
+	 * @param inputEmail
+	 * @return memberTel
+	 */
+	@GetMapping("selectEmail")
+	@ResponseBody
+	public String selectEmail(String inputEmail) {
+		return service.selectEmail(inputEmail);
+	}
 }

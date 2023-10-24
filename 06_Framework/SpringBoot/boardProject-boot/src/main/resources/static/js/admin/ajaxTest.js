@@ -44,3 +44,23 @@ selectMemberNo.addEventListener('click', ()=>{
     console.log(e);
   } )
 });
+
+/* 이메일이 일치하는 회원의 전화번호 조회(비동기) */
+const inputEmail = document.getElementById("inputEmail");
+const btn2 = document.getElementById("btn2");
+const result2 = document.getElementById("result2");
+
+btn2.addEventListener('click', ()=>{
+  fetch("/ajax/selectEmail?inputEmail=" + inputEmail.value)
+  .then( response=>response.text() ) // 응답이 왔을 때 수행, 응답 결과를 text로 파싱
+
+  // 첫 번째 then()의 반환된 결과를 이용해 기능을 수행
+  .then( tel=>{
+    if(tel == ""){
+      result2.innerText = '이메일이 일치하는 회원이 없습니다';
+    } else{
+      result2.innerText = tel;
+    }
+  } )
+  .catch( e=>console.log(e) ) // 예외 발생 시 수행
+});

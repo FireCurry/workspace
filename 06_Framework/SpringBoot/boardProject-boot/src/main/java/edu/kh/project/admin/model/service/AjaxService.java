@@ -4,4 +4,6 @@ public interface AjaxService {
 
 	String selectMemberNo(int memberNo);
 
+	String selectEmail(String inputEmail);
+
 }

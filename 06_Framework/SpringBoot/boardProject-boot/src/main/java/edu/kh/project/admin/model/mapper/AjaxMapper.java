@@ -11,4 +11,10 @@ public interface AjaxMapper {
 	 */
 	String selectMemberNo(int memberNo);
 
+	/** 이메일로 전화번호 조회
+	 * @param inputEmail
+	 * @return memberTel
+	 */
+	String selectEmail(String inputEmail);
+
 }

@@ -144,4 +144,9 @@ public class AdminController {
 		
 		return "redirect:selectMember?inputEmail=" + memberEmail;
 	}
+	
+	@GetMapping("selectMemberNo")
+	public String selectMemberNo() {
+		return "admin/ajaxTest";
+	}
 }

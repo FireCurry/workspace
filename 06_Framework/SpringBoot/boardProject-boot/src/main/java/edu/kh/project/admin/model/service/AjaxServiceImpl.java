@@ -15,4 +15,9 @@ public class AjaxServiceImpl implements AjaxService{
 	public String selectMemberNo(int memberNo) {
 		return mapper.selectMemberNo(memberNo);
 	}
+	
+	@Override
+	public String selectEmail(String inputEmail) {
+		return mapper.selectEmail(inputEmail);
+	}
 }

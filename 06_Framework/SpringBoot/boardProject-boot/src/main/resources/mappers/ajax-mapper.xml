@@ -8,4 +8,8 @@
 	<select id="selectMemberNo" resultType="string">
 		SELECT MEMBER_EMAIL FROM "MEMBER" WHERE MEMBER_NO = #{memberNo}
 	</select>
+	
+	<select id="selectEmail" resultType="string">
+		SELECT MEMBER_TEL FROM "MEMBER" WHERE MEMBER_EMAIL = #{inputEmail}
+	</select>
 </mapper>
