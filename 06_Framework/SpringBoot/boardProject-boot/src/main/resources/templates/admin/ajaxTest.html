@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ajax 테스트</title>
+  <style>
+    #result4 td{
+      cursor : pointer;
+    }
+
+    #result4 td:hover{
+      background-color: yellowgreen;
+    }
+  </style>
 </head>
 <body>
 
@@ -32,10 +41,22 @@
 
   회원 번호 : <input type="number" min="1" max="999" id="inputMemberNo2">
   <button id="btn3">조회</button>
-
   <div id="result3"></div>
 
+  <hr>
 
+  <h3>문자열을 입력 받아 일부라도 일치하는 모든 이메일 조회</h3>
+
+  문자열 입력 : <input type="text" id="input4">
+  <button id="btn4">이메일 목록 검색</button>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>이메일</th>
+      </tr>
+    </thead>
+    <tbody id="result4"></tbody>
+  </table>
 
   <script src="/js/admin/ajaxTest.js"></script>
 </body>

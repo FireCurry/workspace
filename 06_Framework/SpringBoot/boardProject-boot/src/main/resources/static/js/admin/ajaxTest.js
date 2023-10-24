@@ -41,6 +41,7 @@ selectMemberNo.addEventListener('click', ()=>{
 
   // 비동기 통신 중 예외 발생 시 수행
   .catch( (e)=>{
+    result1.innerText = '';
     console.log(e);
   } )
 });
@@ -72,8 +73,71 @@ const result3 = document.getElementById("result3");
 
 btn3.addEventListener('click', ()=>{
   fetch("/ajax/selectMember?no=" + no2.value)
-  .then(resp => {})
-  .then( ()=>{} )
-  .catch( e => console.log(e) );
 
+  // 응답 데이터가 JSON인 경우 JS 객체로 파싱
+  .then(resp => resp.json()) 
+
+  .then( member=>{
+    // console.log(member);
+    result3.innerText = ''; // #result3 내용 삭제
+
+    const ul = document.createElement("ul");
+
+    ul.setAttribute('style', 'list-style : none;');
+
+    for(let key in member){
+      const li = document.createElement("li"); // li 요소 생성
+      li.innerText = `${key} : ${member[key]}`; // li 내용 추가
+      ul.append(li);
+    }
+    result3.append(ul);
+  } )
+  .catch( e => { // 조회 결과가 null이면 JSON 파싱에서 예외 발생
+    console.log(e);
+    result3.innerText = ''; // 기존 내용 삭제
+    const h4 = document.createElement('h4');
+    h4.innerText = '일치하는 회원이 없습니다';
+    result3.append(h4);
+  } );
+
+});
+
+
+/* 문자열을 입력 받아 일부라도 일치하는 이메일 조회 */
+const input4 = document.getElementById('input4');
+const btn4 = document.getElementById('btn4');
+const result4 = document.getElementById('result4');
+
+btn4.addEventListener('click', ()=>{
+  fetch("/ajax/selectEmailList?keyword=" + input4.value)
+  .then( resp => resp.json() ) // List 객체 -> JSON Array -> JS 객체 배열 변환
+  .then( emailList =>{
+    result4.innerText = '';
+
+    if(emailList.length == 0){ // 조회 결과가 없을 경우
+      const tr = document.createElement('tr');
+      const th = document.createElement('th');
+      th.innerText = "조회 결과가 없습니다.";
+
+      tr.append(th);
+      result4.append(tr);
+    } else { // 조회 결과가 있을 경우
+
+      // JS의 향상된 for문 : for...of
+      for(let email of emailList){
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+
+        td.innerText = email;
+        // td 클릭 시 해당 이메일 회원 정보 상세 조회 페이지 이동
+        td.addEventListener('click', e=>{
+          location.href = '/admin/selectMember?inputEmail=' + e.target.innerText;
+        });
+
+        tr.append(td);
+        result4.append(tr);
+      }
+    }
+  })
+  .catch(e => console.log(e));
 });

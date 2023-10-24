@@ -1,5 +1,7 @@
 package edu.kh.project.admin.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +27,10 @@ public class AjaxServiceImpl implements AjaxService{
 	@Override
 	public Member selectMember(int no) {
 		return mapper.selectMember(no);
+	}
+	
+	@Override
+	public List<String> selectEmailList(String keyword) {
+		return mapper.selectEmailList(keyword);
 	}
 }

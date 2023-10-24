@@ -21,4 +21,18 @@
     	FROM "MEMBER"
     	WHERE MEMBER_NO = #{no}
 	</select>
+	
+	<!--일부 일치하는 이메일 모두 조회-->
+	
+	<!--mapper의 반환형이 List인 경우
+		조회 결과 1행씩 List에 자동 추가된다!
+		-> resultType을 list가 아닌 List에 추가되는 요소의 타입을 작성
+	-->
+	
+	<!-- ${keyword} 사용 이유 ($ 사용 이유):
+		# 사용 시 따옴표가 추가로 작성돼 SQL 문법 오류 발생-->
+	<select id="selectEmailList" resultType="string">
+		SELECT MEMBER_EMAIL FROM "MEMBER"
+		WHERE MEMBER_EMAIL LIKE '%${keyword}%'
+	</select>
 </mapper>

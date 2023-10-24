@@ -1,5 +1,7 @@
 package edu.kh.project.admin.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -81,5 +83,11 @@ public class AjaxController {
 		// 3) JS에서 자동으로 JS 객체로 변환되어 사용 가능
 		
 		return service.selectMember(no);
+	}
+	
+	@GetMapping(value="selectEmailList", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public List<String> selectEmailList(String keyword) {
+		return service.selectEmailList(keyword);
 	}
 }
