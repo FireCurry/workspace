@@ -1,6 +1,7 @@
 package edu.kh.project.admin.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import edu.kh.project.member.model.dto.Member;
 
@@ -29,5 +30,22 @@ public interface AjaxService {
 	 * @return
 	 */
 	List<String> selectEmailList(String keyword);
+
+	/** 모든 회원 정보 조회
+	 * @return
+	 */
+	List<Member> selectAll();
+
+	/** 샘플 계정 삽입
+	 * @param member
+	 * @return result
+	 */
+	int insertMember(Member member);
+
+	/** 회원 탈퇴여부 변경
+	 * @param paramMap
+	 * @return
+	 */
+	int updateFlag(Map<String, Object> paramMap);
 
 }

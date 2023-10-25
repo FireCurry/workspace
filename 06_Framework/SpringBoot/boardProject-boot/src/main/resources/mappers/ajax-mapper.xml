@@ -35,4 +35,17 @@
 		SELECT MEMBER_EMAIL FROM "MEMBER"
 		WHERE MEMBER_EMAIL LIKE '%${keyword}%'
 	</select>
+	
+	<!-- 모든 회원 정보 조회 -->
+	<select id="selectAll" resultType="Member">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICKNAME, MEMBER_TEL, MEMBER_DEL_FL
+		FROM "MEMBER" ORDER BY MEMBER_NO DESC
+	</select>
+	
+	<!-- 탈퇴 여부 수정 -->
+	<update id="updateFlag">
+		UPDATE "MEMBER" SET
+		MEMBER_DEL_FL = #{flag}
+		WHERE MEMBER_NO = #{targetNo}
+	</update>
 </mapper>
