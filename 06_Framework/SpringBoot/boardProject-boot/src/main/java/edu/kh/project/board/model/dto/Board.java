@@ -1,5 +1,7 @@
 package edu.kh.project.board.model.dto;
 
+import java.util.List;
+
 // DTO (Date Transfer Object) : 데이터 전달용 객체
 // - 클래스간의 이동(레이어 이동) 시 필요한 데이터를 한 번에 담아서 전달하는 용도의 객체
 
@@ -34,4 +36,8 @@ public class Board {
     private int likeCount; // 좋아요 수
     private String memberNickname; // 작성자 닉네임
     private String thumnail; // 썸네일 이미지 경로 
+    private String profileImg; // 게시글 작성자 프로필 이미지
+    
+    // 댓글 목록을 저장할 필드
+    private List<Comment> commentList;
 }
