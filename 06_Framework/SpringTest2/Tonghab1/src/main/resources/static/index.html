@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 조회</title>
+</head>
+<body>
+    <h1>게시글 조회 (제목으로 검색)</h1>
+    <input type="text" name="inputTitle" placeholder="게시글 제목 입력" id="inputTitle">
+    <button type="button" id="btn">조회</button>
+
+    <div id="div">
+
+    </div>
+
+    <script>
+        const inputTitle = document.getElementById('inputTitle');
+        const btn = document.getElementById('btn');
+        const div = document.getElementById("div");
+
+        btn.addEventListener("click", ()=>{
+            div.innerHTML = "";
+            fetch("/board/select2?inputTitle=" + inputTitle.value)
+            .then(resp => resp.json())
+            .then(boardList =>{
+                if(listSize(boardList) == 0){
+                const table = document.createElement('table');
+                table.setAttribute("border", 1);
+                table.style.textAlign = "center";
+                const tr1 = document.createElement('tr');
+                const th1 = document.createElement('th');
+                th1.innerText = "번호";
+                const th2 = document.createElement('th');
+                th2.innerText = "제목";
+                const th3 = document.createElement('th');
+                th3.innerText = "작성자";
+                const th4 = document.createElement('th');
+                th4.innerText = "내용";
+                const th5 = document.createElement('th');
+                th5.innerText = "조회수";
+                const th6 = document.createElement('th');
+                th6.innerText = "작성날짜";
+                tr1.append(th1,th2,th3,th4,th5,th6);
+                table.append(tr1);
+                for(board of boardList){
+                    const tr = document.createElement("tr");
+                    for(let key in board){
+                        const td = document.createElement("td");
+                        td.innerText = board[key];
+                        tr.append(td);
+                    }
+                    table.append(tr);
+                }
+                div.append(table);
+                } else{
+                    const h1 = document.createElement("h1");
+                    h1.innerText = "조회 결과가 없습니다";
+                    div.append(h1);
+                }
+
+            })
+            .catch(e=>console.log(e))
+        })
+    </script>
+</body>
+</html>
