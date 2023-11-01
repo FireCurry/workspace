@@ -1,14 +1,18 @@
 package edu.kh.project.myPage.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.member.model.dto.Member;
@@ -137,4 +141,45 @@ public class MyPageController {
 		return path;
 	}
 	
+	// -------------------------------------------------------------------------
+	
+	// MultipartFile : multipart/form-data 형식으로 제출된 파라미터 중
+	//				file 타입 데이터만 추출해 저장하는 Spring 제공 객체
+	// - 실제 파일
+	// - 파일 이름
+	// - 파일 크기
+	// - 업로드된 파일을 지정된 경로에 저장하는 메서드
+	// (추가설정 필요!)
+	
+	/** 프로필 이미지 수정
+	 * @param profileImg : 실제로 업로드된 프로필 이미지
+	 * @param loginMember
+	 * @param ra
+	 * @return
+	 * @throws IOException 
+	 * @throws IllegalStateException 
+	 */
+	@PostMapping("profile")
+	public String profile(@RequestParam("profileImg") MultipartFile profileImg, @SessionAttribute("loginMember") Member loginMember,
+			RedirectAttributes ra) throws IllegalStateException, IOException {
+		
+		//프로필 이미지 수정 서비스 호출 후 결과 반환
+		int result = service.profile(profileImg, loginMember);
+								// 실제 이미지 파일, 세션에 저장된 회원 정보
+		
+		// 서비스 결과에 따라 응답 제어
+		String message = null;
+		
+		if(result > 0) {
+			message = "프로필 이미지가 변경 되었습니다";
+					
+		} else {
+			message = "프로필 변경 실패";
+			
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:profile";
+	}
 }

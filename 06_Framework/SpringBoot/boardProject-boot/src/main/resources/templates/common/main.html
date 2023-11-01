@@ -171,10 +171,12 @@
               <!-- 프로필 이미지가 없으면 기본 이미지 -->
               <!-- 타임리프 코드인 #{} 구문을 해석해서
               현재 태그의 src 속성의 값으로 삽입 -->
-              <img th:src="#{user.default.image}" id="memberProfile">
+              <img th:src="#{user.default.image}" id="memberProfile"
+                th:if="${session.loginMember.profileImg == null}">
   
               <!-- 프로필 이미지가 있으면 프로필 이미지(작성 예정) -->
-  
+              <img th:src="${session.loginMember.profileImg}" id="memberProfile"
+                th:unless="${session.loginMember.profileImg == null}">
   
             </a>
   
