@@ -104,7 +104,8 @@ public class EditBoardController {
 	 */
 	@PostMapping("{boardCode:[0-9]+}/insert")
 	public String insertBoard(@PathVariable("boardCode") int boardCode, @SessionAttribute("loginMember") Member loginMember,
-		Board board, @RequestParam("images") List<MultipartFile> images, RedirectAttributes ra) throws IllegalStateException, IOException {
+		Board board, @RequestParam("im"
+				+ "ages") List<MultipartFile> images, RedirectAttributes ra) throws IllegalStateException, IOException {
 		
 		// 로그인한 회원의 번호, 게시판 코드를
 		// 커맨드 객체 board에 세팅
