@@ -230,7 +230,7 @@ public class BoardController {
 	         }
 	         
 	         // 썸네일이 있을 경우 1, 없으면 0을 start로 세팅
-	         model.addAttribute("start", board.getThumnail() != null ? 1 : 0);
+//	         model.addAttribute("start", board.getThumnail() != null ? 1 : 0);
 		}
 		
 		else { // 게시글이 없을 경우
