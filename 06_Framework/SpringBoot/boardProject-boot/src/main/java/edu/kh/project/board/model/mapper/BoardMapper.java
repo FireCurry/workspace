@@ -60,4 +60,17 @@ public interface BoardMapper {
 	 */
 	int updateReadCount(int boardNo);
 
+	/** 검색어 일치 게시글 수 조회
+	 * @param paramMap
+	 * @return listCount
+	 */
+	int searchListCount(Map<String, Object> paramMap);
+
+	/** 검색어 일치 게시글 목록 조회
+	 * @param paramMap
+	 * @param rowBounds
+	 * @return boardList
+	 */
+	List<Board> searchBoardList(Map<String, Object> paramMap, RowBounds rowBounds);
+
 }
