@@ -138,4 +138,16 @@ public class BoardServiceImpl implements BoardService{
 	public int updateReadCount(int boardNo) {
 		return mapper.updateReadCount(boardNo);
 	}
+
+	// DB 이미지 파일명 목록 조회
+	@Override
+	public List<String> selectDbImageList() {
+		return mapper.selectDbImageList();
+	}
+
+	// 게시판 종류 조회
+	@Override
+	public List<Map<String, Object>> selectBoardTypeList() {
+		return mapper.selectBoardTypeList();
+	}
 }
