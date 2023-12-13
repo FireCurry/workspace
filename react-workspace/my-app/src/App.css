@@ -1,0 +1,13 @@
+.info{
+  width: 250px;
+  border: 2px solid black;
+}
+
+/* 글자 가운데 선 긋기 */
+.completed{
+  text-decoration: line-through;
+}
+
+.color-red{
+  color: red;
+}
